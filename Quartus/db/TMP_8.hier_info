@@ -1,0 +1,117 @@
+|Main_Block
+Data[0] <= MAR_8bit:inst2.data_out[0]
+Data[1] <= MAR_8bit:inst2.data_out[1]
+Data[2] <= MAR_8bit:inst2.data_out[2]
+Data[3] <= MAR_8bit:inst2.data_out[3]
+Data[4] <= MAR_8bit:inst2.data_out[4]
+Data[5] <= MAR_8bit:inst2.data_out[5]
+Data[6] <= MAR_8bit:inst2.data_out[6]
+Data[7] <= MAR_8bit:inst2.data_out[7]
+CLK => counter_8bit:inst.clk
+
+
+|Main_Block|MAR_8bit:inst2
+clk => data_out[0]~reg0.CLK
+clk => data_out[1]~reg0.CLK
+clk => data_out[2]~reg0.CLK
+clk => data_out[3]~reg0.CLK
+clk => data_out[4]~reg0.CLK
+clk => data_out[5]~reg0.CLK
+clk => data_out[6]~reg0.CLK
+clk => data_out[7]~reg0.CLK
+clear => data_out[0]~reg0.ACLR
+clear => data_out[1]~reg0.ACLR
+clear => data_out[2]~reg0.ACLR
+clear => data_out[3]~reg0.ACLR
+clear => data_out[4]~reg0.ACLR
+clear => data_out[5]~reg0.ACLR
+clear => data_out[6]~reg0.ACLR
+clear => data_out[7]~reg0.ACLR
+data_in[0] => data_out[0]~reg0.DATAIN
+data_in[1] => data_out[1]~reg0.DATAIN
+data_in[2] => data_out[2]~reg0.DATAIN
+data_in[3] => data_out[3]~reg0.DATAIN
+data_in[4] => data_out[4]~reg0.DATAIN
+data_in[5] => data_out[5]~reg0.DATAIN
+data_in[6] => data_out[6]~reg0.DATAIN
+data_in[7] => data_out[7]~reg0.DATAIN
+data_out[0] <= data_out[0]~reg0.DB_MAX_OUTPUT_PORT_TYPE
+data_out[1] <= data_out[1]~reg0.DB_MAX_OUTPUT_PORT_TYPE
+data_out[2] <= data_out[2]~reg0.DB_MAX_OUTPUT_PORT_TYPE
+data_out[3] <= data_out[3]~reg0.DB_MAX_OUTPUT_PORT_TYPE
+data_out[4] <= data_out[4]~reg0.DB_MAX_OUTPUT_PORT_TYPE
+data_out[5] <= data_out[5]~reg0.DB_MAX_OUTPUT_PORT_TYPE
+data_out[6] <= data_out[6]~reg0.DB_MAX_OUTPUT_PORT_TYPE
+data_out[7] <= data_out[7]~reg0.DB_MAX_OUTPUT_PORT_TYPE
+
+
+|Main_Block|buffer_8bit:inst1
+data_in[0] => data_out[0].DATAIN
+data_in[1] => data_out[1].DATAIN
+data_in[2] => data_out[2].DATAIN
+data_in[3] => data_out[3].DATAIN
+data_in[4] => data_out[4].DATAIN
+data_in[5] => data_out[5].DATAIN
+data_in[6] => data_out[6].DATAIN
+data_in[7] => data_out[7].DATAIN
+enable => data_out[0].OE
+enable => data_out[1].OE
+enable => data_out[2].OE
+enable => data_out[3].OE
+enable => data_out[4].OE
+enable => data_out[5].OE
+enable => data_out[6].OE
+enable => data_out[7].OE
+data_out[0] <= data_out[0].DB_MAX_OUTPUT_PORT_TYPE
+data_out[1] <= data_out[1].DB_MAX_OUTPUT_PORT_TYPE
+data_out[2] <= data_out[2].DB_MAX_OUTPUT_PORT_TYPE
+data_out[3] <= data_out[3].DB_MAX_OUTPUT_PORT_TYPE
+data_out[4] <= data_out[4].DB_MAX_OUTPUT_PORT_TYPE
+data_out[5] <= data_out[5].DB_MAX_OUTPUT_PORT_TYPE
+data_out[6] <= data_out[6].DB_MAX_OUTPUT_PORT_TYPE
+data_out[7] <= data_out[7].DB_MAX_OUTPUT_PORT_TYPE
+
+
+|Main_Block|counter_8bit:inst
+clk => count[0]~reg0.CLK
+clk => count[1]~reg0.CLK
+clk => count[2]~reg0.CLK
+clk => count[3]~reg0.CLK
+clk => count[4]~reg0.CLK
+clk => count[5]~reg0.CLK
+clk => count[6]~reg0.CLK
+clk => count[7]~reg0.CLK
+clear => count[0]~reg0.ACLR
+clear => count[1]~reg0.ACLR
+clear => count[2]~reg0.ACLR
+clear => count[3]~reg0.ACLR
+clear => count[4]~reg0.ACLR
+clear => count[5]~reg0.ACLR
+clear => count[6]~reg0.ACLR
+clear => count[7]~reg0.ACLR
+load => count.OUTPUTSELECT
+load => count.OUTPUTSELECT
+load => count.OUTPUTSELECT
+load => count.OUTPUTSELECT
+load => count.OUTPUTSELECT
+load => count.OUTPUTSELECT
+load => count.OUTPUTSELECT
+load => count.OUTPUTSELECT
+data_in[0] => count.DATAB
+data_in[1] => count.DATAB
+data_in[2] => count.DATAB
+data_in[3] => count.DATAB
+data_in[4] => count.DATAB
+data_in[5] => count.DATAB
+data_in[6] => count.DATAB
+data_in[7] => count.DATAB
+count[0] <= count[0]~reg0.DB_MAX_OUTPUT_PORT_TYPE
+count[1] <= count[1]~reg0.DB_MAX_OUTPUT_PORT_TYPE
+count[2] <= count[2]~reg0.DB_MAX_OUTPUT_PORT_TYPE
+count[3] <= count[3]~reg0.DB_MAX_OUTPUT_PORT_TYPE
+count[4] <= count[4]~reg0.DB_MAX_OUTPUT_PORT_TYPE
+count[5] <= count[5]~reg0.DB_MAX_OUTPUT_PORT_TYPE
+count[6] <= count[6]~reg0.DB_MAX_OUTPUT_PORT_TYPE
+count[7] <= count[7]~reg0.DB_MAX_OUTPUT_PORT_TYPE
+
+

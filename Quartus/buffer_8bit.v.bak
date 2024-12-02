@@ -1,0 +1,13 @@
+module buffer_8bit (
+    input wire [7:0] data_in,    // 8-bit data input
+    input wire enable,           // Enable signal for the buffer
+    output reg [7:0] data_out    // 8-bit data output
+);
+    always @(*) begin
+        if (enable) begin
+            data_out = data_in;  // Pass input data to output when enabled
+        end else begin
+            data_out = 8'bz;     // High-impedance state when disabled
+        end
+    end
+endmodule

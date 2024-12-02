@@ -1,0 +1,15 @@
+module register_8bit (
+    input wire clk,              // Clock input
+    input wire reset,            // Asynchronous reset input
+    input wire enable,           // Enable signal
+    input wire [7:0] data_in,    // 8-bit data input
+    output reg [7:0] data_out    // 8-bit data output
+);
+    always @(posedge clk or posedge reset) begin
+        if (reset) begin
+            data_out <= 8'b0;    // Reset the register to 0
+        end else if (enable) begin
+            data_out <= data_in; // Update output if enabled
+        end
+    end
+endmodule
