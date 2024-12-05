@@ -8,25 +8,291 @@ z2
 !i10f 100
 cModel Technology
 Z0 dC:/Users/Prince/Documents/GitHub/TMP8_Microprocessor/Quartus/simulation/modelsim
+vadder_subtractor_control
+Z1 !s110 1733174621
+!i10b 1
+!s100 n8`mRbRS6T?72GgN?ih1E0
+I3^0d;kRJ6QQkL:]f6>STi1
+Z2 VDg1SIo80bB@j0V0VzS_@n1
+R0
+w1733153811
+8C:/Users/Prince/Documents/GitHub/TMP8_Microprocessor/Quartus/adder_subtractor_control.v
+FC:/Users/Prince/Documents/GitHub/TMP8_Microprocessor/Quartus/adder_subtractor_control.v
+L0 1
+Z3 OV;L;10.5b;63
+r1
+!s85 0
+31
+Z4 !s108 1733174621.000000
+!s107 C:/Users/Prince/Documents/GitHub/TMP8_Microprocessor/Quartus/adder_subtractor_control.v|
+!s90 -reportprogress|300|-vlog01compat|-work|work|+incdir+C:/Users/Prince/Documents/GitHub/TMP8_Microprocessor/Quartus|C:/Users/Prince/Documents/GitHub/TMP8_Microprocessor/Quartus/adder_subtractor_control.v|
+!i113 1
+Z5 o-vlog01compat -work work
+Z6 !s92 -vlog01compat -work work +incdir+C:/Users/Prince/Documents/GitHub/TMP8_Microprocessor/Quartus
+Z7 tCvgOpt 0
 vbuffer_8bit
-!s110 1733151674
+R1
 !i10b 1
 !s100 LDZKP<4K4LJ<CX7=D@[0f2
 Ic8a<_j6ZQ`gc1]T4B9@@a0
-VDg1SIo80bB@j0V0VzS_@n1
+R2
 R0
 w1733151631
 8C:/Users/Prince/Documents/GitHub/TMP8_Microprocessor/Quartus/buffer_8bit.v
 FC:/Users/Prince/Documents/GitHub/TMP8_Microprocessor/Quartus/buffer_8bit.v
 L0 1
-OV;L;10.5b;63
+R3
 r1
 !s85 0
 31
-!s108 1733151674.000000
+R4
 !s107 C:/Users/Prince/Documents/GitHub/TMP8_Microprocessor/Quartus/buffer_8bit.v|
 !s90 -reportprogress|300|-vlog01compat|-work|work|+incdir+C:/Users/Prince/Documents/GitHub/TMP8_Microprocessor/Quartus|C:/Users/Prince/Documents/GitHub/TMP8_Microprocessor/Quartus/buffer_8bit.v|
 !i113 1
-o-vlog01compat -work work
-!s92 -vlog01compat -work work +incdir+C:/Users/Prince/Documents/GitHub/TMP8_Microprocessor/Quartus
-tCvgOpt 0
+R5
+R6
+R7
+vbus_combiner_10bit
+R1
+!i10b 1
+!s100 i;hdf2j<;JX_08JMWEX=Q3
+IDW6kPm9^CVY<8?b7kI]RG2
+R2
+R0
+w1733171125
+8C:/Users/Prince/Documents/GitHub/TMP8_Microprocessor/Quartus/bus_combiner_10bit.v
+FC:/Users/Prince/Documents/GitHub/TMP8_Microprocessor/Quartus/bus_combiner_10bit.v
+L0 1
+R3
+r1
+!s85 0
+31
+R4
+!s107 C:/Users/Prince/Documents/GitHub/TMP8_Microprocessor/Quartus/bus_combiner_10bit.v|
+!s90 -reportprogress|300|-vlog01compat|-work|work|+incdir+C:/Users/Prince/Documents/GitHub/TMP8_Microprocessor/Quartus|C:/Users/Prince/Documents/GitHub/TMP8_Microprocessor/Quartus/bus_combiner_10bit.v|
+!i113 1
+R5
+R6
+R7
+vbus_combiner_2bit
+!s110 1733174622
+!i10b 1
+!s100 FZI:SHUPjVjQWCFOPA`OM2
+IcTPEnK>NX[O>cQAaiN^LF2
+R2
+R0
+w1733173464
+8C:/Users/Prince/Documents/GitHub/TMP8_Microprocessor/Quartus/bus_combine_2bit.v
+FC:/Users/Prince/Documents/GitHub/TMP8_Microprocessor/Quartus/bus_combine_2bit.v
+L0 1
+R3
+r1
+!s85 0
+31
+!s108 1733174622.000000
+!s107 C:/Users/Prince/Documents/GitHub/TMP8_Microprocessor/Quartus/bus_combine_2bit.v|
+!s90 -reportprogress|300|-vlog01compat|-work|work|+incdir+C:/Users/Prince/Documents/GitHub/TMP8_Microprocessor/Quartus|C:/Users/Prince/Documents/GitHub/TMP8_Microprocessor/Quartus/bus_combine_2bit.v|
+!i113 1
+R5
+R6
+R7
+vbus_combiner_ISA
+R1
+!i10b 1
+!s100 BETEockT96:N@Q_zjXN>@0
+Id[>FzP<`Wc1;5<73^JUiN0
+R2
+R0
+w1733173627
+8C:/Users/Prince/Documents/GitHub/TMP8_Microprocessor/Quartus/bus_combiner_ISA.v
+FC:/Users/Prince/Documents/GitHub/TMP8_Microprocessor/Quartus/bus_combiner_ISA.v
+L0 1
+R3
+r1
+!s85 0
+31
+R4
+!s107 C:/Users/Prince/Documents/GitHub/TMP8_Microprocessor/Quartus/bus_combiner_ISA.v|
+!s90 -reportprogress|300|-vlog01compat|-work|work|+incdir+C:/Users/Prince/Documents/GitHub/TMP8_Microprocessor/Quartus|C:/Users/Prince/Documents/GitHub/TMP8_Microprocessor/Quartus/bus_combiner_ISA.v|
+!i113 1
+R5
+R6
+R7
+nbus_combiner_@i@s@a
+vbus_splitter_16bit
+R1
+!i10b 1
+!s100 :XMKXlF9a[@_PCm2UGY9j2
+IGF?B<[n]8I`D=ae`HRmXz3
+R2
+R0
+w1733172564
+8C:/Users/Prince/Documents/GitHub/TMP8_Microprocessor/Quartus/bus_splitter_16bit.v
+FC:/Users/Prince/Documents/GitHub/TMP8_Microprocessor/Quartus/bus_splitter_16bit.v
+L0 1
+R3
+r1
+!s85 0
+31
+R4
+!s107 C:/Users/Prince/Documents/GitHub/TMP8_Microprocessor/Quartus/bus_splitter_16bit.v|
+!s90 -reportprogress|300|-vlog01compat|-work|work|+incdir+C:/Users/Prince/Documents/GitHub/TMP8_Microprocessor/Quartus|C:/Users/Prince/Documents/GitHub/TMP8_Microprocessor/Quartus/bus_splitter_16bit.v|
+!i113 1
+R5
+R6
+R7
+vbus_splitter_8bit
+R1
+!i10b 1
+!s100 CRd_3MV1i84U;[SUban`d3
+IEZPNEoFhJO[Ecdj:N`5h50
+R2
+R0
+w1733170963
+8C:/Users/Prince/Documents/GitHub/TMP8_Microprocessor/Quartus/bus_splitter_8bit.v
+FC:/Users/Prince/Documents/GitHub/TMP8_Microprocessor/Quartus/bus_splitter_8bit.v
+L0 1
+R3
+r1
+!s85 0
+31
+R4
+!s107 C:/Users/Prince/Documents/GitHub/TMP8_Microprocessor/Quartus/bus_splitter_8bit.v|
+!s90 -reportprogress|300|-vlog01compat|-work|work|+incdir+C:/Users/Prince/Documents/GitHub/TMP8_Microprocessor/Quartus|C:/Users/Prince/Documents/GitHub/TMP8_Microprocessor/Quartus/bus_splitter_8bit.v|
+!i113 1
+R5
+R6
+R7
+vcounter_3bit
+R1
+!i10b 1
+!s100 LDQkoNO0[WGX5V]foN1lZ3
+Id`d=488MBXdQ;A<@R5Y[z2
+R2
+R0
+w1733171392
+8C:/Users/Prince/Documents/GitHub/TMP8_Microprocessor/Quartus/counter_3bit.v
+FC:/Users/Prince/Documents/GitHub/TMP8_Microprocessor/Quartus/counter_3bit.v
+L0 1
+R3
+r1
+!s85 0
+31
+R4
+!s107 C:/Users/Prince/Documents/GitHub/TMP8_Microprocessor/Quartus/counter_3bit.v|
+!s90 -reportprogress|300|-vlog01compat|-work|work|+incdir+C:/Users/Prince/Documents/GitHub/TMP8_Microprocessor/Quartus|C:/Users/Prince/Documents/GitHub/TMP8_Microprocessor/Quartus/counter_3bit.v|
+!i113 1
+R5
+R6
+R7
+vcounter_8bit
+R1
+!i10b 1
+!s100 RVEC`OA6P3<U[gfeFIXf>0
+Ii[RSWRHX5`ggM1?iJScH12
+R2
+R0
+w1733152919
+8C:/Users/Prince/Documents/GitHub/TMP8_Microprocessor/Quartus/counter_8bit.v
+FC:/Users/Prince/Documents/GitHub/TMP8_Microprocessor/Quartus/counter_8bit.v
+L0 1
+R3
+r1
+!s85 0
+31
+R4
+!s107 C:/Users/Prince/Documents/GitHub/TMP8_Microprocessor/Quartus/counter_8bit.v|
+!s90 -reportprogress|300|-vlog01compat|-work|work|+incdir+C:/Users/Prince/Documents/GitHub/TMP8_Microprocessor/Quartus|C:/Users/Prince/Documents/GitHub/TMP8_Microprocessor/Quartus/counter_8bit.v|
+!i113 1
+R5
+R6
+R7
+vd_flip_flop
+R1
+!i10b 1
+!s100 _L^AH[KY:l1FGS[Ql]17o2
+I?_0a8KLL_znU?b2`>z7X=1
+R2
+R0
+w1733172173
+8C:/Users/Prince/Documents/GitHub/TMP8_Microprocessor/Quartus/d_flip_flop.v
+FC:/Users/Prince/Documents/GitHub/TMP8_Microprocessor/Quartus/d_flip_flop.v
+L0 1
+R3
+r1
+!s85 0
+31
+R4
+!s107 C:/Users/Prince/Documents/GitHub/TMP8_Microprocessor/Quartus/d_flip_flop.v|
+!s90 -reportprogress|300|-vlog01compat|-work|work|+incdir+C:/Users/Prince/Documents/GitHub/TMP8_Microprocessor/Quartus|C:/Users/Prince/Documents/GitHub/TMP8_Microprocessor/Quartus/d_flip_flop.v|
+!i113 1
+R5
+R6
+R7
+vdecoder_3x8
+R1
+!i10b 1
+!s100 G9ei@LEJ8jCA`8QB;Te<L3
+Ifg[ONlFjznWSG7FabQb[f1
+R2
+R0
+w1733171325
+8C:/Users/Prince/Documents/GitHub/TMP8_Microprocessor/Quartus/decoder_3x8.v
+FC:/Users/Prince/Documents/GitHub/TMP8_Microprocessor/Quartus/decoder_3x8.v
+L0 1
+R3
+r1
+!s85 0
+31
+R4
+!s107 C:/Users/Prince/Documents/GitHub/TMP8_Microprocessor/Quartus/decoder_3x8.v|
+!s90 -reportprogress|300|-vlog01compat|-work|work|+incdir+C:/Users/Prince/Documents/GitHub/TMP8_Microprocessor/Quartus|C:/Users/Prince/Documents/GitHub/TMP8_Microprocessor/Quartus/decoder_3x8.v|
+!i113 1
+R5
+R6
+R7
+vMAR_8bit
+!s110 1733174620
+!i10b 1
+!s100 K8Y@]L4k_mOjRLm52z2e_1
+I>DVR]CFoi]VHXXWOcJ7jV2
+R2
+R0
+w1733151198
+8C:/Users/Prince/Documents/GitHub/TMP8_Microprocessor/Quartus/MAR_8bit.v
+FC:/Users/Prince/Documents/GitHub/TMP8_Microprocessor/Quartus/MAR_8bit.v
+L0 1
+R3
+r1
+!s85 0
+31
+!s108 1733174620.000000
+!s107 C:/Users/Prince/Documents/GitHub/TMP8_Microprocessor/Quartus/MAR_8bit.v|
+!s90 -reportprogress|300|-vlog01compat|-work|work|+incdir+C:/Users/Prince/Documents/GitHub/TMP8_Microprocessor/Quartus|C:/Users/Prince/Documents/GitHub/TMP8_Microprocessor/Quartus/MAR_8bit.v|
+!i113 1
+R5
+R6
+R7
+n@m@a@r_8bit
+vregister_8bit
+R1
+!i10b 1
+!s100 6GFN19lB`_VoF8gJI_FFa1
+I?0I;CmW71=W0]E:^CYZOO1
+R2
+R0
+w1733153383
+8C:/Users/Prince/Documents/GitHub/TMP8_Microprocessor/Quartus/register_8bit.v
+FC:/Users/Prince/Documents/GitHub/TMP8_Microprocessor/Quartus/register_8bit.v
+L0 1
+R3
+r1
+!s85 0
+31
+R4
+!s107 C:/Users/Prince/Documents/GitHub/TMP8_Microprocessor/Quartus/register_8bit.v|
+!s90 -reportprogress|300|-vlog01compat|-work|work|+incdir+C:/Users/Prince/Documents/GitHub/TMP8_Microprocessor/Quartus|C:/Users/Prince/Documents/GitHub/TMP8_Microprocessor/Quartus/register_8bit.v|
+!i113 1
+R5
+R6
+R7

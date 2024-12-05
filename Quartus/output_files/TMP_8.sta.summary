@@ -2,4 +2,44 @@
 Timing Analyzer Summary
 ------------------------------------------------------------
 
+Type  : Setup 'RST'
+Slack : -8.939
+TNS   : -236.859
+
+Type  : Setup 'CLK'
+Slack : -3.362
+TNS   : -38.792
+
+Type  : Hold 'CLK'
+Slack : 1.683
+TNS   : 0.000
+
+Type  : Hold 'RST'
+Slack : 2.335
+TNS   : 0.000
+
+Type  : Recovery 'RST'
+Slack : -0.864
+TNS   : -27.648
+
+Type  : Recovery 'CLK'
+Slack : -0.864
+TNS   : -13.824
+
+Type  : Removal 'CLK'
+Slack : 0.810
+TNS   : 0.000
+
+Type  : Removal 'RST'
+Slack : 0.810
+TNS   : 0.000
+
+Type  : Minimum Pulse Width 'CLK'
+Slack : -2.289
+TNS   : -2.289
+
+Type  : Minimum Pulse Width 'RST'
+Slack : -2.289
+TNS   : -2.289
+
 ------------------------------------------------------------

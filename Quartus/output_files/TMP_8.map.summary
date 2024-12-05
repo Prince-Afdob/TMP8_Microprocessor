@@ -1,9 +1,9 @@
-Analysis & Synthesis Status : Successful - Mon Dec 02 20:43:56 2024
+Analysis & Synthesis Status : Successful - Tue Dec 03 02:44:31 2024
 Quartus Prime Version : 18.1.0 Build 625 09/12/2018 SJ Standard Edition
 Revision Name : TMP_8
 Top-level Entity Name : Main_Block
 Family : MAX II
-Total logic elements : 0
-Total pins : 9
+Total logic elements : 105
+Total pins : 52
 Total virtual pins : 0
 UFM blocks : 0 / 1 ( 0 % )

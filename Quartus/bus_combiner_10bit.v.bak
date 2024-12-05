@@ -1,0 +1,15 @@
+module bus_combiner_10bit (
+    input wire bit0,         // Bit 0 input (LSB)
+    input wire bit1,         // Bit 1 input
+    input wire bit2,         // Bit 2 input
+    input wire bit3,         // Bit 3 input
+    input wire bit4,         // Bit 4 input
+    input wire bit5,         // Bit 5 input
+    input wire bit6,         // Bit 6 input
+    input wire bit7,         // Bit 7 input
+    input wire bit8,         // Bit 8 input
+    input wire bit9,         // Bit 9 input (MSB)
+    output wire [9:0] bus_out // 10-bit output bus
+);
+    assign bus_out = {bit9, bit8, bit7, bit6, bit5, bit4, bit3, bit2, bit1, bit0};
+endmodule

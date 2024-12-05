@@ -58,3 +58,12 @@ set_global_assignment -name VERILOG_FILE counter_8bit.v
 set_global_assignment -name VERILOG_FILE register_8bit.v
 set_global_assignment -name VERILOG_FILE bus_splitter_2bit.v
 set_global_assignment -name VERILOG_FILE adder_subtractor_control.v
+set_global_assignment -name VERILOG_FILE bus_splitter_8bit.v
+set_global_assignment -name VERILOG_FILE bus_combiner_10bit.v
+set_global_assignment -name VERILOG_FILE decoder_3x8.v
+set_global_assignment -name VERILOG_FILE counter_3bit.v
+set_global_assignment -name VERILOG_FILE bus_combiner_4bit.v
+set_global_assignment -name VERILOG_FILE bus_combiner_ISA.v
+set_global_assignment -name VERILOG_FILE d_flip_flop.v
+set_global_assignment -name VERILOG_FILE bus_splitter_16bit.v
+set_global_assignment -name VERILOG_FILE bus_combine_2bit.v

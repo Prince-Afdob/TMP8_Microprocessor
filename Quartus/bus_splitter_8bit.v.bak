@@ -1,0 +1,20 @@
+module bus_splitter_8bit (
+    input wire [7:0] bus_in,  // 8-bit input bus
+    output wire bit0,         // LSB (bit 0)
+    output wire bit1,         // Bit 1
+    output wire bit2,         // Bit 2
+    output wire bit3,         // Bit 3
+    output wire bit4,         // Bit 4
+    output wire bit5,         // Bit 5
+    output wire bit6,         // Bit 6
+    output wire bit7          // MSB (bit 7)
+);
+    assign bit0 = bus_in[0];  // Extract bit 0
+    assign bit1 = bus_in[1];  // Extract bit 1
+    assign bit2 = bus_in[2];  // Extract bit 2
+    assign bit3 = bus_in[3];  // Extract bit 3
+    assign bit4 = bus_in[4];  // Extract bit 4
+    assign bit5 = bus_in[5];  // Extract bit 5
+    assign bit6 = bus_in[6];  // Extract bit 6
+    assign bit7 = bus_in[7];  // Extract bit 7
+endmodule

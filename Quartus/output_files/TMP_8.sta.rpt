@@ -1,5 +1,5 @@
 Timing Analyzer report for TMP_8
-Mon Dec 02 20:43:59 2024
+Tue Dec 03 02:44:38 2024
 Quartus Prime Version 18.1.0 Build 625 09/12/2018 SJ Standard Edition
 
 
@@ -16,11 +16,27 @@ Quartus Prime Version 18.1.0 Build 625 09/12/2018 SJ Standard Edition
   8. Recovery Summary
   9. Removal Summary
  10. Minimum Pulse Width Summary
- 11. Clock Transfers
- 12. Report TCCS
- 13. Report RSKM
- 14. Unconstrained Paths Summary
- 15. Timing Analyzer Messages
+ 11. Setup: 'RST'
+ 12. Setup: 'CLK'
+ 13. Hold: 'CLK'
+ 14. Hold: 'RST'
+ 15. Recovery: 'RST'
+ 16. Recovery: 'CLK'
+ 17. Removal: 'CLK'
+ 18. Removal: 'RST'
+ 19. Setup Transfers
+ 20. Hold Transfers
+ 21. Recovery Transfers
+ 22. Removal Transfers
+ 23. Report TCCS
+ 24. Report RSKM
+ 25. Unconstrained Paths Summary
+ 26. Clock Status Summary
+ 27. Unconstrained Input Ports
+ 28. Unconstrained Output Ports
+ 29. Unconstrained Input Ports
+ 30. Unconstrained Output Ports
+ 31. Timing Analyzer Messages
 
 
 
@@ -73,52 +89,673 @@ refer to the applicable agreement for further details.
 +----------------------------+-------------+
 
 
-----------
-; Clocks ;
-----------
-No clocks to report.
++---------------------------------------------------------------------------------------------------------------------------------------------------------------------------------+
+; Clocks                                                                                                                                                                          ;
++------------+------+--------+------------+-------+-------+------------+-----------+-------------+-------+--------+-----------+------------+----------+--------+--------+---------+
+; Clock Name ; Type ; Period ; Frequency  ; Rise  ; Fall  ; Duty Cycle ; Divide by ; Multiply by ; Phase ; Offset ; Edge List ; Edge Shift ; Inverted ; Master ; Source ; Targets ;
++------------+------+--------+------------+-------+-------+------------+-----------+-------------+-------+--------+-----------+------------+----------+--------+--------+---------+
+; CLK        ; Base ; 1.000  ; 1000.0 MHz ; 0.000 ; 0.500 ;            ;           ;             ;       ;        ;           ;            ;          ;        ;        ; { CLK } ;
+; RST        ; Base ; 1.000  ; 1000.0 MHz ; 0.000 ; 0.500 ;            ;           ;             ;       ;        ;           ;            ;          ;        ;        ; { RST } ;
++------------+------+--------+------------+-------+-------+------------+-----------+-------------+-------+--------+-----------+------------+----------+--------+--------+---------+
 
 
-----------------
-; Fmax Summary ;
-----------------
-No paths to report.
++--------------------------------------------------+
+; Fmax Summary                                     ;
++------------+-----------------+------------+------+
+; Fmax       ; Restricted Fmax ; Clock Name ; Note ;
++------------+-----------------+------------+------+
+; 100.61 MHz ; 100.61 MHz      ; RST        ;      ;
+; 229.25 MHz ; 229.25 MHz      ; CLK        ;      ;
++------------+-----------------+------------+------+
+This panel reports FMAX for every clock in the design, regardless of the user-specified clock periods.  FMAX is only computed for paths where the source and destination registers or ports are driven by the same clock.  Paths of different clocks, including generated clocks, are ignored.  For paths between a clock and its inversion, FMAX is computed as if the rising and falling edges are scaled along with FMAX, such that the duty cycle (in terms of a percentage) is maintained. Altera recommends that you always use clock constraints and other slack reports for sign-off analysis.
 
 
------------------
-; Setup Summary ;
------------------
-No paths to report.
++--------------------------------+
+; Setup Summary                  ;
++-------+--------+---------------+
+; Clock ; Slack  ; End Point TNS ;
++-------+--------+---------------+
+; RST   ; -8.939 ; -236.859      ;
+; CLK   ; -3.362 ; -38.792       ;
++-------+--------+---------------+
 
 
-----------------
-; Hold Summary ;
-----------------
-No paths to report.
++-------------------------------+
+; Hold Summary                  ;
++-------+-------+---------------+
+; Clock ; Slack ; End Point TNS ;
++-------+-------+---------------+
+; CLK   ; 1.683 ; 0.000         ;
+; RST   ; 2.335 ; 0.000         ;
++-------+-------+---------------+
 
 
---------------------
-; Recovery Summary ;
---------------------
-No paths to report.
++--------------------------------+
+; Recovery Summary               ;
++-------+--------+---------------+
+; Clock ; Slack  ; End Point TNS ;
++-------+--------+---------------+
+; RST   ; -0.864 ; -27.648       ;
+; CLK   ; -0.864 ; -13.824       ;
++-------+--------+---------------+
 
 
--------------------
-; Removal Summary ;
--------------------
-No paths to report.
++-------------------------------+
+; Removal Summary               ;
++-------+-------+---------------+
+; Clock ; Slack ; End Point TNS ;
++-------+-------+---------------+
+; CLK   ; 0.810 ; 0.000         ;
+; RST   ; 0.810 ; 0.000         ;
++-------+-------+---------------+
 
 
--------------------------------
-; Minimum Pulse Width Summary ;
--------------------------------
-No paths to report.
++--------------------------------+
+; Minimum Pulse Width Summary    ;
++-------+--------+---------------+
+; Clock ; Slack  ; End Point TNS ;
++-------+--------+---------------+
+; CLK   ; -2.289 ; -2.289        ;
+; RST   ; -2.289 ; -2.289        ;
++-------+--------+---------------+
 
 
--------------------
-; Clock Transfers ;
--------------------
-Nothing to report.
++---------------------------------------------------------------------------------------------------------------------------------------------------+
+; Setup: 'RST'                                                                                                                                      ;
++--------+---------------------------------+----------------------------------+--------------+-------------+--------------+------------+------------+
+; Slack  ; From Node                       ; To Node                          ; Launch Clock ; Latch Clock ; Relationship ; Clock Skew ; Data Delay ;
++--------+---------------------------------+----------------------------------+--------------+-------------+--------------+------------+------------+
+; -8.939 ; register_8bit:inst3|data_out[5] ; register_8bit:inst4|data_out[7]  ; RST          ; RST         ; 1.000        ; 0.000      ; 9.606      ;
+; -8.860 ; register_8bit:inst4|data_out[1] ; register_8bit:inst4|data_out[7]  ; RST          ; RST         ; 1.000        ; 0.000      ; 9.527      ;
+; -8.858 ; register_8bit:inst4|data_out[6] ; register_8bit:inst4|data_out[7]  ; RST          ; RST         ; 1.000        ; 0.000      ; 9.525      ;
+; -8.837 ; register_8bit:inst3|data_out[4] ; register_8bit:inst4|data_out[7]  ; RST          ; RST         ; 1.000        ; 0.000      ; 9.504      ;
+; -8.835 ; register_8bit:inst3|data_out[6] ; register_8bit:inst4|data_out[7]  ; RST          ; RST         ; 1.000        ; 0.000      ; 9.502      ;
+; -8.758 ; register_8bit:inst3|data_out[0] ; register_8bit:inst4|data_out[7]  ; RST          ; RST         ; 1.000        ; 0.000      ; 9.425      ;
+; -8.753 ; register_8bit:inst4|data_out[4] ; register_8bit:inst4|data_out[7]  ; RST          ; RST         ; 1.000        ; 0.000      ; 9.420      ;
+; -8.742 ; register_8bit:inst4|data_out[2] ; register_8bit:inst4|data_out[7]  ; RST          ; RST         ; 1.000        ; 0.000      ; 9.409      ;
+; -8.674 ; register_8bit:inst4|data_out[3] ; register_8bit:inst4|data_out[7]  ; RST          ; RST         ; 1.000        ; 0.000      ; 9.341      ;
+; -8.624 ; register_8bit:inst3|data_out[1] ; register_8bit:inst4|data_out[7]  ; RST          ; RST         ; 1.000        ; 0.000      ; 9.291      ;
+; -8.615 ; register_8bit:inst4|data_out[1] ; register_8bit:inst3|data_out[6]  ; RST          ; RST         ; 1.000        ; 0.000      ; 9.282      ;
+; -8.590 ; register_8bit:inst4|data_out[1] ; register_8bit:inst5|data_out[3]  ; RST          ; RST         ; 1.000        ; 0.000      ; 9.257      ;
+; -8.589 ; register_8bit:inst4|data_out[1] ; register_8bit:inst4|data_out[6]  ; RST          ; RST         ; 1.000        ; 0.000      ; 9.256      ;
+; -8.571 ; register_8bit:inst3|data_out[5] ; register_8bit:inst3|data_out[6]  ; RST          ; RST         ; 1.000        ; 0.000      ; 9.238      ;
+; -8.545 ; register_8bit:inst3|data_out[5] ; register_8bit:inst4|data_out[6]  ; RST          ; RST         ; 1.000        ; 0.000      ; 9.212      ;
+; -8.534 ; register_8bit:inst4|data_out[0] ; register_8bit:inst4|data_out[7]  ; RST          ; RST         ; 1.000        ; 0.000      ; 9.201      ;
+; -8.514 ; register_8bit:inst3|data_out[2] ; register_8bit:inst4|data_out[7]  ; RST          ; RST         ; 1.000        ; 0.000      ; 9.181      ;
+; -8.513 ; register_8bit:inst3|data_out[0] ; register_8bit:inst3|data_out[6]  ; RST          ; RST         ; 1.000        ; 0.000      ; 9.180      ;
+; -8.506 ; register_8bit:inst4|data_out[1] ; register_8bit:inst4|data_out[5]  ; RST          ; RST         ; 1.000        ; 0.000      ; 9.173      ;
+; -8.497 ; register_8bit:inst4|data_out[2] ; register_8bit:inst3|data_out[6]  ; RST          ; RST         ; 1.000        ; 0.000      ; 9.164      ;
+; -8.488 ; register_8bit:inst3|data_out[0] ; register_8bit:inst5|data_out[3]  ; RST          ; RST         ; 1.000        ; 0.000      ; 9.155      ;
+; -8.487 ; register_8bit:inst3|data_out[0] ; register_8bit:inst4|data_out[6]  ; RST          ; RST         ; 1.000        ; 0.000      ; 9.154      ;
+; -8.478 ; register_8bit:inst4|data_out[1] ; register_8bit:inst4|data_out[4]  ; RST          ; RST         ; 1.000        ; 0.000      ; 9.145      ;
+; -8.472 ; register_8bit:inst4|data_out[2] ; register_8bit:inst5|data_out[3]  ; RST          ; RST         ; 1.000        ; 0.000      ; 9.139      ;
+; -8.471 ; register_8bit:inst4|data_out[2] ; register_8bit:inst4|data_out[6]  ; RST          ; RST         ; 1.000        ; 0.000      ; 9.138      ;
+; -8.469 ; register_8bit:inst3|data_out[4] ; register_8bit:inst3|data_out[6]  ; RST          ; RST         ; 1.000        ; 0.000      ; 9.136      ;
+; -8.443 ; register_8bit:inst3|data_out[4] ; register_8bit:inst4|data_out[6]  ; RST          ; RST         ; 1.000        ; 0.000      ; 9.110      ;
+; -8.429 ; register_8bit:inst4|data_out[3] ; register_8bit:inst3|data_out[6]  ; RST          ; RST         ; 1.000        ; 0.000      ; 9.096      ;
+; -8.426 ; register_8bit:inst4|data_out[5] ; register_8bit:inst4|data_out[7]  ; RST          ; RST         ; 1.000        ; 0.000      ; 9.093      ;
+; -8.404 ; register_8bit:inst3|data_out[0] ; register_8bit:inst4|data_out[5]  ; RST          ; RST         ; 1.000        ; 0.000      ; 9.071      ;
+; -8.403 ; register_8bit:inst4|data_out[3] ; register_8bit:inst4|data_out[6]  ; RST          ; RST         ; 1.000        ; 0.000      ; 9.070      ;
+; -8.388 ; register_8bit:inst4|data_out[2] ; register_8bit:inst4|data_out[5]  ; RST          ; RST         ; 1.000        ; 0.000      ; 9.055      ;
+; -8.385 ; register_8bit:inst4|data_out[4] ; register_8bit:inst3|data_out[6]  ; RST          ; RST         ; 1.000        ; 0.000      ; 9.052      ;
+; -8.379 ; register_8bit:inst3|data_out[1] ; register_8bit:inst3|data_out[6]  ; RST          ; RST         ; 1.000        ; 0.000      ; 9.046      ;
+; -8.376 ; register_8bit:inst3|data_out[0] ; register_8bit:inst4|data_out[4]  ; RST          ; RST         ; 1.000        ; 0.000      ; 9.043      ;
+; -8.360 ; register_8bit:inst4|data_out[2] ; register_8bit:inst4|data_out[4]  ; RST          ; RST         ; 1.000        ; 0.000      ; 9.027      ;
+; -8.359 ; register_8bit:inst4|data_out[4] ; register_8bit:inst4|data_out[6]  ; RST          ; RST         ; 1.000        ; 0.000      ; 9.026      ;
+; -8.354 ; register_8bit:inst3|data_out[1] ; register_8bit:inst5|data_out[3]  ; RST          ; RST         ; 1.000        ; 0.000      ; 9.021      ;
+; -8.353 ; register_8bit:inst3|data_out[1] ; register_8bit:inst4|data_out[6]  ; RST          ; RST         ; 1.000        ; 0.000      ; 9.020      ;
+; -8.327 ; register_8bit:inst3|data_out[3] ; register_8bit:inst4|data_out[7]  ; RST          ; RST         ; 1.000        ; 0.000      ; 8.994      ;
+; -8.320 ; register_8bit:inst4|data_out[3] ; register_8bit:inst4|data_out[5]  ; RST          ; RST         ; 1.000        ; 0.000      ; 8.987      ;
+; -8.292 ; register_8bit:inst4|data_out[3] ; register_8bit:inst4|data_out[4]  ; RST          ; RST         ; 1.000        ; 0.000      ; 8.959      ;
+; -8.289 ; register_8bit:inst4|data_out[0] ; register_8bit:inst3|data_out[6]  ; RST          ; RST         ; 1.000        ; 0.000      ; 8.956      ;
+; -8.270 ; register_8bit:inst3|data_out[1] ; register_8bit:inst4|data_out[5]  ; RST          ; RST         ; 1.000        ; 0.000      ; 8.937      ;
+; -8.269 ; register_8bit:inst3|data_out[2] ; register_8bit:inst3|data_out[6]  ; RST          ; RST         ; 1.000        ; 0.000      ; 8.936      ;
+; -8.264 ; register_8bit:inst4|data_out[0] ; register_8bit:inst5|data_out[3]  ; RST          ; RST         ; 1.000        ; 0.000      ; 8.931      ;
+; -8.263 ; register_8bit:inst4|data_out[0] ; register_8bit:inst4|data_out[6]  ; RST          ; RST         ; 1.000        ; 0.000      ; 8.930      ;
+; -8.244 ; register_8bit:inst3|data_out[2] ; register_8bit:inst5|data_out[3]  ; RST          ; RST         ; 1.000        ; 0.000      ; 8.911      ;
+; -8.243 ; register_8bit:inst3|data_out[2] ; register_8bit:inst4|data_out[6]  ; RST          ; RST         ; 1.000        ; 0.000      ; 8.910      ;
+; -8.242 ; register_8bit:inst3|data_out[1] ; register_8bit:inst4|data_out[4]  ; RST          ; RST         ; 1.000        ; 0.000      ; 8.909      ;
+; -8.237 ; register_8bit:inst3|data_out[4] ; register_8bit:inst4|data_out[5]  ; RST          ; RST         ; 1.000        ; 0.000      ; 8.904      ;
+; -8.204 ; register_8bit:inst3|data_out[5] ; register_8bit:inst13|data_out[7] ; RST          ; RST         ; 1.000        ; 0.000      ; 8.871      ;
+; -8.192 ; register_8bit:inst4|data_out[3] ; register_8bit:inst5|data_out[3]  ; RST          ; RST         ; 1.000        ; 0.000      ; 8.859      ;
+; -8.180 ; register_8bit:inst4|data_out[0] ; register_8bit:inst4|data_out[5]  ; RST          ; RST         ; 1.000        ; 0.000      ; 8.847      ;
+; -8.168 ; register_8bit:inst3|data_out[5] ; register_8bit:inst3|data_out[7]  ; RST          ; RST         ; 1.000        ; 0.000      ; 8.835      ;
+; -8.160 ; register_8bit:inst3|data_out[2] ; register_8bit:inst4|data_out[5]  ; RST          ; RST         ; 1.000        ; 0.000      ; 8.827      ;
+; -8.153 ; register_8bit:inst4|data_out[4] ; register_8bit:inst4|data_out[5]  ; RST          ; RST         ; 1.000        ; 0.000      ; 8.820      ;
+; -8.152 ; register_8bit:inst4|data_out[0] ; register_8bit:inst4|data_out[4]  ; RST          ; RST         ; 1.000        ; 0.000      ; 8.819      ;
+; -8.132 ; register_8bit:inst3|data_out[2] ; register_8bit:inst4|data_out[4]  ; RST          ; RST         ; 1.000        ; 0.000      ; 8.799      ;
+; -8.125 ; register_8bit:inst4|data_out[1] ; register_8bit:inst13|data_out[7] ; RST          ; RST         ; 1.000        ; 0.000      ; 8.792      ;
+; -8.123 ; register_8bit:inst4|data_out[6] ; register_8bit:inst13|data_out[7] ; RST          ; RST         ; 1.000        ; 0.000      ; 8.790      ;
+; -8.102 ; register_8bit:inst3|data_out[4] ; register_8bit:inst13|data_out[7] ; RST          ; RST         ; 1.000        ; 0.000      ; 8.769      ;
+; -8.100 ; register_8bit:inst3|data_out[6] ; register_8bit:inst13|data_out[7] ; RST          ; RST         ; 1.000        ; 0.000      ; 8.767      ;
+; -8.089 ; register_8bit:inst4|data_out[1] ; register_8bit:inst3|data_out[7]  ; RST          ; RST         ; 1.000        ; 0.000      ; 8.756      ;
+; -8.087 ; register_8bit:inst4|data_out[6] ; register_8bit:inst3|data_out[7]  ; RST          ; RST         ; 1.000        ; 0.000      ; 8.754      ;
+; -8.082 ; register_8bit:inst3|data_out[3] ; register_8bit:inst3|data_out[6]  ; RST          ; RST         ; 1.000        ; 0.000      ; 8.749      ;
+; -8.066 ; register_8bit:inst3|data_out[4] ; register_8bit:inst3|data_out[7]  ; RST          ; RST         ; 1.000        ; 0.000      ; 8.733      ;
+; -8.064 ; register_8bit:inst3|data_out[6] ; register_8bit:inst3|data_out[7]  ; RST          ; RST         ; 1.000        ; 0.000      ; 8.731      ;
+; -8.058 ; register_8bit:inst4|data_out[5] ; register_8bit:inst3|data_out[6]  ; RST          ; RST         ; 1.000        ; 0.000      ; 8.725      ;
+; -8.056 ; register_8bit:inst3|data_out[3] ; register_8bit:inst4|data_out[6]  ; RST          ; RST         ; 1.000        ; 0.000      ; 8.723      ;
+; -8.032 ; register_8bit:inst4|data_out[5] ; register_8bit:inst4|data_out[6]  ; RST          ; RST         ; 1.000        ; 0.000      ; 8.699      ;
+; -8.023 ; register_8bit:inst3|data_out[0] ; register_8bit:inst13|data_out[7] ; RST          ; RST         ; 1.000        ; 0.000      ; 8.690      ;
+; -8.018 ; register_8bit:inst4|data_out[4] ; register_8bit:inst13|data_out[7] ; RST          ; RST         ; 1.000        ; 0.000      ; 8.685      ;
+; -8.007 ; register_8bit:inst4|data_out[2] ; register_8bit:inst13|data_out[7] ; RST          ; RST         ; 1.000        ; 0.000      ; 8.674      ;
+; -7.987 ; register_8bit:inst3|data_out[0] ; register_8bit:inst3|data_out[7]  ; RST          ; RST         ; 1.000        ; 0.000      ; 8.654      ;
+; -7.982 ; register_8bit:inst4|data_out[4] ; register_8bit:inst3|data_out[7]  ; RST          ; RST         ; 1.000        ; 0.000      ; 8.649      ;
+; -7.973 ; register_8bit:inst3|data_out[3] ; register_8bit:inst4|data_out[5]  ; RST          ; RST         ; 1.000        ; 0.000      ; 8.640      ;
+; -7.971 ; register_8bit:inst4|data_out[2] ; register_8bit:inst3|data_out[7]  ; RST          ; RST         ; 1.000        ; 0.000      ; 8.638      ;
+; -7.967 ; register_8bit:inst4|data_out[1] ; register_8bit:inst4|data_out[3]  ; RST          ; RST         ; 1.000        ; 0.000      ; 8.634      ;
+; -7.951 ; register_8bit:inst4|data_out[1] ; register_8bit:inst3|data_out[3]  ; RST          ; RST         ; 1.000        ; 0.000      ; 8.618      ;
+; -7.945 ; register_8bit:inst3|data_out[3] ; register_8bit:inst4|data_out[4]  ; RST          ; RST         ; 1.000        ; 0.000      ; 8.612      ;
+; -7.939 ; register_8bit:inst4|data_out[3] ; register_8bit:inst13|data_out[7] ; RST          ; RST         ; 1.000        ; 0.000      ; 8.606      ;
+; -7.934 ; register_8bit:inst4|data_out[1] ; register_8bit:inst4|data_out[2]  ; RST          ; RST         ; 1.000        ; 0.000      ; 8.601      ;
+; -7.926 ; register_8bit:inst4|data_out[1] ; register_8bit:inst3|data_out[2]  ; RST          ; RST         ; 1.000        ; 0.000      ; 8.593      ;
+; -7.903 ; register_8bit:inst4|data_out[3] ; register_8bit:inst3|data_out[7]  ; RST          ; RST         ; 1.000        ; 0.000      ; 8.570      ;
+; -7.889 ; register_8bit:inst3|data_out[1] ; register_8bit:inst13|data_out[7] ; RST          ; RST         ; 1.000        ; 0.000      ; 8.556      ;
+; -7.865 ; register_8bit:inst3|data_out[0] ; register_8bit:inst4|data_out[3]  ; RST          ; RST         ; 1.000        ; 0.000      ; 8.532      ;
+; -7.853 ; register_8bit:inst3|data_out[1] ; register_8bit:inst3|data_out[7]  ; RST          ; RST         ; 1.000        ; 0.000      ; 8.520      ;
+; -7.850 ; register_8bit:inst4|data_out[1] ; register_8bit:inst13|data_out[5] ; RST          ; RST         ; 1.000        ; 0.000      ; 8.517      ;
+; -7.849 ; register_8bit:inst4|data_out[2] ; register_8bit:inst4|data_out[3]  ; RST          ; RST         ; 1.000        ; 0.000      ; 8.516      ;
+; -7.849 ; register_8bit:inst3|data_out[0] ; register_8bit:inst3|data_out[3]  ; RST          ; RST         ; 1.000        ; 0.000      ; 8.516      ;
+; -7.833 ; register_8bit:inst4|data_out[2] ; register_8bit:inst3|data_out[3]  ; RST          ; RST         ; 1.000        ; 0.000      ; 8.500      ;
+; -7.832 ; register_8bit:inst3|data_out[0] ; register_8bit:inst4|data_out[2]  ; RST          ; RST         ; 1.000        ; 0.000      ; 8.499      ;
+; -7.829 ; register_8bit:inst4|data_out[1] ; register_8bit:inst3|data_out[5]  ; RST          ; RST         ; 1.000        ; 0.000      ; 8.496      ;
+; -7.824 ; register_8bit:inst3|data_out[0] ; register_8bit:inst3|data_out[2]  ; RST          ; RST         ; 1.000        ; 0.000      ; 8.491      ;
+; -7.799 ; register_8bit:inst4|data_out[0] ; register_8bit:inst13|data_out[7] ; RST          ; RST         ; 1.000        ; 0.000      ; 8.466      ;
+; -7.796 ; register_8bit:inst4|data_out[1] ; register_8bit:inst13|data_out[4] ; RST          ; RST         ; 1.000        ; 0.000      ; 8.463      ;
+; -7.791 ; register_8bit:inst4|data_out[6] ; register_8bit:inst3|data_out[6]  ; RST          ; RST         ; 1.000        ; 0.000      ; 8.458      ;
+; -7.779 ; register_8bit:inst3|data_out[2] ; register_8bit:inst13|data_out[7] ; RST          ; RST         ; 1.000        ; 0.000      ; 8.446      ;
+; -7.765 ; register_8bit:inst4|data_out[6] ; register_8bit:inst4|data_out[6]  ; RST          ; RST         ; 1.000        ; 0.000      ; 8.432      ;
++--------+---------------------------------+----------------------------------+--------------+-------------+--------------+------------+------------+
+
+
++----------------------------------------------------------------------------------------------------------------------------------------------+
+; Setup: 'CLK'                                                                                                                                 ;
++--------+----------------------------------+----------------------------+--------------+-------------+--------------+------------+------------+
+; Slack  ; From Node                        ; To Node                    ; Launch Clock ; Latch Clock ; Relationship ; Clock Skew ; Data Delay ;
++--------+----------------------------------+----------------------------+--------------+-------------+--------------+------------+------------+
+; -3.362 ; counter_8bit:inst|count[0]       ; counter_8bit:inst|count[7] ; CLK          ; CLK         ; 1.000        ; 0.000      ; 4.029      ;
+; -3.362 ; counter_8bit:inst|count[0]       ; counter_8bit:inst|count[6] ; CLK          ; CLK         ; 1.000        ; 0.000      ; 4.029      ;
+; -3.362 ; counter_8bit:inst|count[0]       ; counter_8bit:inst|count[5] ; CLK          ; CLK         ; 1.000        ; 0.000      ; 4.029      ;
+; -3.248 ; counter_8bit:inst|count[1]       ; counter_8bit:inst|count[7] ; CLK          ; CLK         ; 1.000        ; 0.000      ; 3.915      ;
+; -3.248 ; counter_8bit:inst|count[1]       ; counter_8bit:inst|count[6] ; CLK          ; CLK         ; 1.000        ; 0.000      ; 3.915      ;
+; -3.248 ; counter_8bit:inst|count[1]       ; counter_8bit:inst|count[5] ; CLK          ; CLK         ; 1.000        ; 0.000      ; 3.915      ;
+; -3.189 ; counter_8bit:inst|count[3]       ; counter_8bit:inst|count[7] ; CLK          ; CLK         ; 1.000        ; 0.000      ; 3.856      ;
+; -3.189 ; counter_8bit:inst|count[3]       ; counter_8bit:inst|count[6] ; CLK          ; CLK         ; 1.000        ; 0.000      ; 3.856      ;
+; -3.189 ; counter_8bit:inst|count[3]       ; counter_8bit:inst|count[5] ; CLK          ; CLK         ; 1.000        ; 0.000      ; 3.856      ;
+; -3.136 ; counter_8bit:inst|count[2]       ; counter_8bit:inst|count[7] ; CLK          ; CLK         ; 1.000        ; 0.000      ; 3.803      ;
+; -3.136 ; counter_8bit:inst|count[2]       ; counter_8bit:inst|count[6] ; CLK          ; CLK         ; 1.000        ; 0.000      ; 3.803      ;
+; -3.136 ; counter_8bit:inst|count[2]       ; counter_8bit:inst|count[5] ; CLK          ; CLK         ; 1.000        ; 0.000      ; 3.803      ;
+; -3.046 ; counter_8bit:inst|count[4]       ; counter_8bit:inst|count[7] ; CLK          ; CLK         ; 1.000        ; 0.000      ; 3.713      ;
+; -3.046 ; counter_8bit:inst|count[4]       ; counter_8bit:inst|count[6] ; CLK          ; CLK         ; 1.000        ; 0.000      ; 3.713      ;
+; -3.046 ; counter_8bit:inst|count[4]       ; counter_8bit:inst|count[5] ; CLK          ; CLK         ; 1.000        ; 0.000      ; 3.713      ;
+; -2.895 ; counter_8bit:inst|count[0]       ; counter_8bit:inst|count[4] ; CLK          ; CLK         ; 1.000        ; 0.000      ; 3.562      ;
+; -2.863 ; counter_8bit:inst|count[5]       ; counter_8bit:inst|count[7] ; CLK          ; CLK         ; 1.000        ; 0.000      ; 3.530      ;
+; -2.781 ; counter_8bit:inst|count[1]       ; counter_8bit:inst|count[4] ; CLK          ; CLK         ; 1.000        ; 0.000      ; 3.448      ;
+; -2.772 ; counter_8bit:inst|count[0]       ; counter_8bit:inst|count[3] ; CLK          ; CLK         ; 1.000        ; 0.000      ; 3.439      ;
+; -2.741 ; counter_8bit:inst|count[6]       ; counter_8bit:inst|count[7] ; CLK          ; CLK         ; 1.000        ; 0.000      ; 3.408      ;
+; -2.740 ; counter_8bit:inst|count[5]       ; counter_8bit:inst|count[6] ; CLK          ; CLK         ; 1.000        ; 0.000      ; 3.407      ;
+; -2.722 ; counter_8bit:inst|count[3]       ; counter_8bit:inst|count[4] ; CLK          ; CLK         ; 1.000        ; 0.000      ; 3.389      ;
+; -2.669 ; counter_8bit:inst|count[2]       ; counter_8bit:inst|count[4] ; CLK          ; CLK         ; 1.000        ; 0.000      ; 3.336      ;
+; -2.658 ; counter_8bit:inst|count[1]       ; counter_8bit:inst|count[3] ; CLK          ; CLK         ; 1.000        ; 0.000      ; 3.325      ;
+; -2.649 ; counter_8bit:inst|count[0]       ; counter_8bit:inst|count[2] ; CLK          ; CLK         ; 1.000        ; 0.000      ; 3.316      ;
+; -2.546 ; counter_8bit:inst|count[2]       ; counter_8bit:inst|count[3] ; CLK          ; CLK         ; 1.000        ; 0.000      ; 3.213      ;
+; -2.535 ; counter_8bit:inst|count[1]       ; counter_8bit:inst|count[2] ; CLK          ; CLK         ; 1.000        ; 0.000      ; 3.202      ;
+; -2.526 ; counter_8bit:inst|count[0]       ; counter_8bit:inst|count[1] ; CLK          ; CLK         ; 1.000        ; 0.000      ; 3.193      ;
+; -2.337 ; counter_8bit:inst|count[0]       ; MAR_8bit:inst2|data_out[0] ; CLK          ; CLK         ; 1.000        ; 0.000      ; 3.004      ;
+; -2.275 ; register_8bit:inst13|data_out[4] ; counter_8bit:inst|count[0] ; RST          ; CLK         ; 1.000        ; 0.000      ; 2.942      ;
+; -2.081 ; counter_8bit:inst|count[5]       ; MAR_8bit:inst2|data_out[5] ; CLK          ; CLK         ; 1.000        ; 0.000      ; 2.748      ;
+; -2.065 ; counter_8bit:inst|count[1]       ; MAR_8bit:inst2|data_out[1] ; CLK          ; CLK         ; 1.000        ; 0.000      ; 2.732      ;
+; -1.983 ; counter_8bit:inst|count[4]       ; MAR_8bit:inst2|data_out[4] ; CLK          ; CLK         ; 1.000        ; 0.000      ; 2.650      ;
+; -1.968 ; counter_8bit:inst|count[6]       ; MAR_8bit:inst2|data_out[6] ; CLK          ; CLK         ; 1.000        ; 0.000      ; 2.635      ;
+; -1.963 ; counter_8bit:inst|count[7]       ; MAR_8bit:inst2|data_out[7] ; CLK          ; CLK         ; 1.000        ; 0.000      ; 2.630      ;
+; -1.955 ; counter_8bit:inst|count[3]       ; MAR_8bit:inst2|data_out[3] ; CLK          ; CLK         ; 1.000        ; 0.000      ; 2.622      ;
+; -1.796 ; register_8bit:inst13|data_out[5] ; counter_8bit:inst|count[1] ; RST          ; CLK         ; 1.000        ; 0.000      ; 2.463      ;
+; -1.785 ; counter_8bit:inst|count[4]       ; counter_8bit:inst|count[4] ; CLK          ; CLK         ; 1.000        ; 0.000      ; 2.452      ;
+; -1.785 ; counter_8bit:inst|count[6]       ; counter_8bit:inst|count[6] ; CLK          ; CLK         ; 1.000        ; 0.000      ; 2.452      ;
+; -1.784 ; counter_8bit:inst|count[5]       ; counter_8bit:inst|count[5] ; CLK          ; CLK         ; 1.000        ; 0.000      ; 2.451      ;
+; -1.766 ; counter_8bit:inst|count[3]       ; counter_8bit:inst|count[3] ; CLK          ; CLK         ; 1.000        ; 0.000      ; 2.433      ;
+; -1.752 ; register_8bit:inst13|data_out[6] ; counter_8bit:inst|count[2] ; RST          ; CLK         ; 1.000        ; 0.000      ; 2.419      ;
+; -1.747 ; register_8bit:inst13|data_out[7] ; counter_8bit:inst|count[3] ; RST          ; CLK         ; 1.000        ; 0.000      ; 2.414      ;
+; -1.699 ; counter_8bit:inst|count[2]       ; counter_8bit:inst|count[2] ; CLK          ; CLK         ; 1.000        ; 0.000      ; 2.366      ;
+; -1.688 ; counter_8bit:inst|count[1]       ; counter_8bit:inst|count[1] ; CLK          ; CLK         ; 1.000        ; 0.000      ; 2.355      ;
+; -1.680 ; counter_8bit:inst|count[7]       ; counter_8bit:inst|count[7] ; CLK          ; CLK         ; 1.000        ; 0.000      ; 2.347      ;
+; -1.679 ; counter_8bit:inst|count[0]       ; counter_8bit:inst|count[0] ; CLK          ; CLK         ; 1.000        ; 0.000      ; 2.346      ;
+; -1.237 ; counter_8bit:inst|count[2]       ; MAR_8bit:inst2|data_out[2] ; CLK          ; CLK         ; 1.000        ; 0.000      ; 1.904      ;
++--------+----------------------------------+----------------------------+--------------+-------------+--------------+------------+------------+
+
+
++---------------------------------------------------------------------------------------------------------------------------------------------+
+; Hold: 'CLK'                                                                                                                                 ;
++-------+----------------------------------+----------------------------+--------------+-------------+--------------+------------+------------+
+; Slack ; From Node                        ; To Node                    ; Launch Clock ; Latch Clock ; Relationship ; Clock Skew ; Data Delay ;
++-------+----------------------------------+----------------------------+--------------+-------------+--------------+------------+------------+
+; 1.683 ; counter_8bit:inst|count[2]       ; MAR_8bit:inst2|data_out[2] ; CLK          ; CLK         ; 0.000        ; 0.000      ; 1.904      ;
+; 2.125 ; counter_8bit:inst|count[0]       ; counter_8bit:inst|count[0] ; CLK          ; CLK         ; 0.000        ; 0.000      ; 2.346      ;
+; 2.126 ; counter_8bit:inst|count[7]       ; counter_8bit:inst|count[7] ; CLK          ; CLK         ; 0.000        ; 0.000      ; 2.347      ;
+; 2.134 ; counter_8bit:inst|count[1]       ; counter_8bit:inst|count[1] ; CLK          ; CLK         ; 0.000        ; 0.000      ; 2.355      ;
+; 2.145 ; counter_8bit:inst|count[2]       ; counter_8bit:inst|count[2] ; CLK          ; CLK         ; 0.000        ; 0.000      ; 2.366      ;
+; 2.193 ; register_8bit:inst13|data_out[7] ; counter_8bit:inst|count[3] ; RST          ; CLK         ; 0.000        ; 0.000      ; 2.414      ;
+; 2.198 ; register_8bit:inst13|data_out[6] ; counter_8bit:inst|count[2] ; RST          ; CLK         ; 0.000        ; 0.000      ; 2.419      ;
+; 2.212 ; counter_8bit:inst|count[3]       ; counter_8bit:inst|count[3] ; CLK          ; CLK         ; 0.000        ; 0.000      ; 2.433      ;
+; 2.230 ; counter_8bit:inst|count[5]       ; counter_8bit:inst|count[5] ; CLK          ; CLK         ; 0.000        ; 0.000      ; 2.451      ;
+; 2.231 ; counter_8bit:inst|count[4]       ; counter_8bit:inst|count[4] ; CLK          ; CLK         ; 0.000        ; 0.000      ; 2.452      ;
+; 2.231 ; counter_8bit:inst|count[6]       ; counter_8bit:inst|count[6] ; CLK          ; CLK         ; 0.000        ; 0.000      ; 2.452      ;
+; 2.242 ; register_8bit:inst13|data_out[5] ; counter_8bit:inst|count[1] ; RST          ; CLK         ; 0.000        ; 0.000      ; 2.463      ;
+; 2.401 ; counter_8bit:inst|count[3]       ; MAR_8bit:inst2|data_out[3] ; CLK          ; CLK         ; 0.000        ; 0.000      ; 2.622      ;
+; 2.409 ; counter_8bit:inst|count[7]       ; MAR_8bit:inst2|data_out[7] ; CLK          ; CLK         ; 0.000        ; 0.000      ; 2.630      ;
+; 2.414 ; counter_8bit:inst|count[6]       ; MAR_8bit:inst2|data_out[6] ; CLK          ; CLK         ; 0.000        ; 0.000      ; 2.635      ;
+; 2.429 ; counter_8bit:inst|count[4]       ; MAR_8bit:inst2|data_out[4] ; CLK          ; CLK         ; 0.000        ; 0.000      ; 2.650      ;
+; 2.511 ; counter_8bit:inst|count[1]       ; MAR_8bit:inst2|data_out[1] ; CLK          ; CLK         ; 0.000        ; 0.000      ; 2.732      ;
+; 2.527 ; counter_8bit:inst|count[5]       ; MAR_8bit:inst2|data_out[5] ; CLK          ; CLK         ; 0.000        ; 0.000      ; 2.748      ;
+; 2.721 ; register_8bit:inst13|data_out[4] ; counter_8bit:inst|count[0] ; RST          ; CLK         ; 0.000        ; 0.000      ; 2.942      ;
+; 2.783 ; counter_8bit:inst|count[0]       ; MAR_8bit:inst2|data_out[0] ; CLK          ; CLK         ; 0.000        ; 0.000      ; 3.004      ;
+; 2.957 ; counter_8bit:inst|count[0]       ; counter_8bit:inst|count[1] ; CLK          ; CLK         ; 0.000        ; 0.000      ; 3.178      ;
+; 2.966 ; counter_8bit:inst|count[1]       ; counter_8bit:inst|count[2] ; CLK          ; CLK         ; 0.000        ; 0.000      ; 3.187      ;
+; 2.977 ; counter_8bit:inst|count[2]       ; counter_8bit:inst|count[3] ; CLK          ; CLK         ; 0.000        ; 0.000      ; 3.198      ;
+; 3.068 ; counter_8bit:inst|count[0]       ; counter_8bit:inst|count[2] ; CLK          ; CLK         ; 0.000        ; 0.000      ; 3.289      ;
+; 3.077 ; counter_8bit:inst|count[1]       ; counter_8bit:inst|count[3] ; CLK          ; CLK         ; 0.000        ; 0.000      ; 3.298      ;
+; 3.088 ; counter_8bit:inst|count[2]       ; counter_8bit:inst|count[4] ; CLK          ; CLK         ; 0.000        ; 0.000      ; 3.309      ;
+; 3.152 ; counter_8bit:inst|count[3]       ; counter_8bit:inst|count[4] ; CLK          ; CLK         ; 0.000        ; 0.000      ; 3.373      ;
+; 3.170 ; counter_8bit:inst|count[5]       ; counter_8bit:inst|count[6] ; CLK          ; CLK         ; 0.000        ; 0.000      ; 3.391      ;
+; 3.171 ; counter_8bit:inst|count[6]       ; counter_8bit:inst|count[7] ; CLK          ; CLK         ; 0.000        ; 0.000      ; 3.392      ;
+; 3.179 ; counter_8bit:inst|count[0]       ; counter_8bit:inst|count[3] ; CLK          ; CLK         ; 0.000        ; 0.000      ; 3.400      ;
+; 3.188 ; counter_8bit:inst|count[1]       ; counter_8bit:inst|count[4] ; CLK          ; CLK         ; 0.000        ; 0.000      ; 3.409      ;
+; 3.281 ; counter_8bit:inst|count[5]       ; counter_8bit:inst|count[7] ; CLK          ; CLK         ; 0.000        ; 0.000      ; 3.502      ;
+; 3.290 ; counter_8bit:inst|count[0]       ; counter_8bit:inst|count[4] ; CLK          ; CLK         ; 0.000        ; 0.000      ; 3.511      ;
+; 3.492 ; counter_8bit:inst|count[4]       ; counter_8bit:inst|count[7] ; CLK          ; CLK         ; 0.000        ; 0.000      ; 3.713      ;
+; 3.492 ; counter_8bit:inst|count[4]       ; counter_8bit:inst|count[6] ; CLK          ; CLK         ; 0.000        ; 0.000      ; 3.713      ;
+; 3.492 ; counter_8bit:inst|count[4]       ; counter_8bit:inst|count[5] ; CLK          ; CLK         ; 0.000        ; 0.000      ; 3.713      ;
+; 3.557 ; counter_8bit:inst|count[2]       ; counter_8bit:inst|count[7] ; CLK          ; CLK         ; 0.000        ; 0.000      ; 3.778      ;
+; 3.557 ; counter_8bit:inst|count[2]       ; counter_8bit:inst|count[6] ; CLK          ; CLK         ; 0.000        ; 0.000      ; 3.778      ;
+; 3.557 ; counter_8bit:inst|count[2]       ; counter_8bit:inst|count[5] ; CLK          ; CLK         ; 0.000        ; 0.000      ; 3.778      ;
+; 3.621 ; counter_8bit:inst|count[3]       ; counter_8bit:inst|count[7] ; CLK          ; CLK         ; 0.000        ; 0.000      ; 3.842      ;
+; 3.621 ; counter_8bit:inst|count[3]       ; counter_8bit:inst|count[6] ; CLK          ; CLK         ; 0.000        ; 0.000      ; 3.842      ;
+; 3.621 ; counter_8bit:inst|count[3]       ; counter_8bit:inst|count[5] ; CLK          ; CLK         ; 0.000        ; 0.000      ; 3.842      ;
+; 3.657 ; counter_8bit:inst|count[1]       ; counter_8bit:inst|count[7] ; CLK          ; CLK         ; 0.000        ; 0.000      ; 3.878      ;
+; 3.657 ; counter_8bit:inst|count[1]       ; counter_8bit:inst|count[6] ; CLK          ; CLK         ; 0.000        ; 0.000      ; 3.878      ;
+; 3.657 ; counter_8bit:inst|count[1]       ; counter_8bit:inst|count[5] ; CLK          ; CLK         ; 0.000        ; 0.000      ; 3.878      ;
+; 3.759 ; counter_8bit:inst|count[0]       ; counter_8bit:inst|count[7] ; CLK          ; CLK         ; 0.000        ; 0.000      ; 3.980      ;
+; 3.759 ; counter_8bit:inst|count[0]       ; counter_8bit:inst|count[6] ; CLK          ; CLK         ; 0.000        ; 0.000      ; 3.980      ;
+; 3.759 ; counter_8bit:inst|count[0]       ; counter_8bit:inst|count[5] ; CLK          ; CLK         ; 0.000        ; 0.000      ; 3.980      ;
++-------+----------------------------------+----------------------------+--------------+-------------+--------------+------------+------------+
+
+
++--------------------------------------------------------------------------------------------------------------------------------------------------+
+; Hold: 'RST'                                                                                                                                      ;
++-------+---------------------------------+----------------------------------+--------------+-------------+--------------+------------+------------+
+; Slack ; From Node                       ; To Node                          ; Launch Clock ; Latch Clock ; Relationship ; Clock Skew ; Data Delay ;
++-------+---------------------------------+----------------------------------+--------------+-------------+--------------+------------+------------+
+; 2.335 ; register_8bit:inst5|data_out[2] ; register_8bit:inst13|data_out[2] ; RST          ; RST         ; 0.000        ; 0.000      ; 2.556      ;
+; 2.632 ; register_8bit:inst3|data_out[4] ; register_8bit:inst5|data_out[4]  ; RST          ; RST         ; 0.000        ; 0.000      ; 2.853      ;
+; 2.635 ; register_8bit:inst3|data_out[7] ; register_8bit:inst5|data_out[7]  ; RST          ; RST         ; 0.000        ; 0.000      ; 2.856      ;
+; 2.636 ; register_8bit:inst5|data_out[0] ; register_8bit:inst13|data_out[0] ; RST          ; RST         ; 0.000        ; 0.000      ; 2.857      ;
+; 2.828 ; register_8bit:inst5|data_out[5] ; register_8bit:inst5|data_out[5]  ; RST          ; RST         ; 0.000        ; 0.000      ; 3.049      ;
+; 2.943 ; register_8bit:inst5|data_out[1] ; register_8bit:inst13|data_out[1] ; RST          ; RST         ; 0.000        ; 0.000      ; 3.164      ;
+; 3.103 ; register_8bit:inst5|data_out[3] ; register_8bit:inst13|data_out[3] ; RST          ; RST         ; 0.000        ; 0.000      ; 3.324      ;
+; 3.408 ; register_8bit:inst3|data_out[4] ; register_8bit:inst3|data_out[4]  ; RST          ; RST         ; 0.000        ; 0.000      ; 3.629      ;
+; 3.416 ; register_8bit:inst3|data_out[1] ; register_8bit:inst13|data_out[1] ; RST          ; RST         ; 0.000        ; 0.000      ; 3.637      ;
+; 3.535 ; register_8bit:inst5|data_out[2] ; register_8bit:inst5|data_out[2]  ; RST          ; RST         ; 0.000        ; 0.000      ; 3.756      ;
+; 3.581 ; register_8bit:inst5|data_out[7] ; register_8bit:inst5|data_out[7]  ; RST          ; RST         ; 0.000        ; 0.000      ; 3.802      ;
+; 3.659 ; register_8bit:inst5|data_out[1] ; register_8bit:inst4|data_out[1]  ; RST          ; RST         ; 0.000        ; 0.000      ; 3.880      ;
+; 3.811 ; register_8bit:inst3|data_out[2] ; register_8bit:inst13|data_out[2] ; RST          ; RST         ; 0.000        ; 0.000      ; 4.032      ;
+; 3.855 ; register_8bit:inst3|data_out[7] ; register_8bit:inst3|data_out[7]  ; RST          ; RST         ; 0.000        ; 0.000      ; 4.076      ;
+; 3.863 ; register_8bit:inst3|data_out[4] ; register_8bit:inst13|data_out[4] ; RST          ; RST         ; 0.000        ; 0.000      ; 4.084      ;
+; 3.864 ; register_8bit:inst5|data_out[0] ; register_8bit:inst5|data_out[0]  ; RST          ; RST         ; 0.000        ; 0.000      ; 4.085      ;
+; 3.891 ; register_8bit:inst3|data_out[7] ; register_8bit:inst13|data_out[7] ; RST          ; RST         ; 0.000        ; 0.000      ; 4.112      ;
+; 4.025 ; register_8bit:inst5|data_out[5] ; register_8bit:inst3|data_out[5]  ; RST          ; RST         ; 0.000        ; 0.000      ; 4.246      ;
+; 4.046 ; register_8bit:inst5|data_out[5] ; register_8bit:inst13|data_out[5] ; RST          ; RST         ; 0.000        ; 0.000      ; 4.267      ;
+; 4.092 ; register_8bit:inst4|data_out[7] ; register_8bit:inst5|data_out[7]  ; RST          ; RST         ; 0.000        ; 0.000      ; 4.313      ;
+; 4.160 ; register_8bit:inst3|data_out[1] ; register_8bit:inst4|data_out[1]  ; RST          ; RST         ; 0.000        ; 0.000      ; 4.381      ;
+; 4.216 ; register_8bit:inst3|data_out[6] ; register_8bit:inst5|data_out[6]  ; RST          ; RST         ; 0.000        ; 0.000      ; 4.437      ;
+; 4.240 ; register_8bit:inst4|data_out[4] ; register_8bit:inst5|data_out[4]  ; RST          ; RST         ; 0.000        ; 0.000      ; 4.461      ;
+; 4.311 ; register_8bit:inst4|data_out[2] ; register_8bit:inst13|data_out[2] ; RST          ; RST         ; 0.000        ; 0.000      ; 4.532      ;
+; 4.402 ; register_8bit:inst3|data_out[5] ; register_8bit:inst5|data_out[5]  ; RST          ; RST         ; 0.000        ; 0.000      ; 4.623      ;
+; 4.414 ; register_8bit:inst5|data_out[2] ; register_8bit:inst3|data_out[2]  ; RST          ; RST         ; 0.000        ; 0.000      ; 4.635      ;
+; 4.422 ; register_8bit:inst5|data_out[2] ; register_8bit:inst4|data_out[2]  ; RST          ; RST         ; 0.000        ; 0.000      ; 4.643      ;
+; 4.484 ; register_8bit:inst3|data_out[3] ; register_8bit:inst13|data_out[3] ; RST          ; RST         ; 0.000        ; 0.000      ; 4.705      ;
+; 4.526 ; register_8bit:inst3|data_out[0] ; register_8bit:inst13|data_out[0] ; RST          ; RST         ; 0.000        ; 0.000      ; 4.747      ;
+; 4.530 ; register_8bit:inst5|data_out[0] ; register_8bit:inst3|data_out[0]  ; RST          ; RST         ; 0.000        ; 0.000      ; 4.751      ;
+; 4.545 ; register_8bit:inst3|data_out[4] ; register_8bit:inst4|data_out[4]  ; RST          ; RST         ; 0.000        ; 0.000      ; 4.766      ;
+; 4.550 ; register_8bit:inst5|data_out[0] ; register_8bit:inst4|data_out[0]  ; RST          ; RST         ; 0.000        ; 0.000      ; 4.771      ;
+; 4.626 ; register_8bit:inst3|data_out[7] ; register_8bit:inst4|data_out[7]  ; RST          ; RST         ; 0.000        ; 0.000      ; 4.847      ;
+; 4.702 ; register_8bit:inst5|data_out[5] ; register_8bit:inst4|data_out[5]  ; RST          ; RST         ; 0.000        ; 0.000      ; 4.923      ;
+; 4.730 ; register_8bit:inst5|data_out[1] ; register_8bit:inst3|data_out[1]  ; RST          ; RST         ; 0.000        ; 0.000      ; 4.951      ;
+; 4.749 ; register_8bit:inst5|data_out[7] ; register_8bit:inst3|data_out[7]  ; RST          ; RST         ; 0.000        ; 0.000      ; 4.970      ;
+; 4.785 ; register_8bit:inst5|data_out[7] ; register_8bit:inst13|data_out[7] ; RST          ; RST         ; 0.000        ; 0.000      ; 5.006      ;
+; 4.808 ; register_8bit:inst5|data_out[6] ; register_8bit:inst5|data_out[6]  ; RST          ; RST         ; 0.000        ; 0.000      ; 5.029      ;
+; 4.832 ; register_8bit:inst5|data_out[1] ; register_8bit:inst5|data_out[1]  ; RST          ; RST         ; 0.000        ; 0.000      ; 5.053      ;
+; 4.964 ; register_8bit:inst4|data_out[1] ; register_8bit:inst13|data_out[1] ; RST          ; RST         ; 0.000        ; 0.000      ; 5.185      ;
+; 5.004 ; register_8bit:inst3|data_out[6] ; register_8bit:inst13|data_out[6] ; RST          ; RST         ; 0.000        ; 0.000      ; 5.225      ;
+; 5.016 ; register_8bit:inst4|data_out[4] ; register_8bit:inst3|data_out[4]  ; RST          ; RST         ; 0.000        ; 0.000      ; 5.237      ;
+; 5.035 ; register_8bit:inst3|data_out[2] ; register_8bit:inst5|data_out[2]  ; RST          ; RST         ; 0.000        ; 0.000      ; 5.256      ;
+; 5.039 ; register_8bit:inst5|data_out[3] ; register_8bit:inst3|data_out[3]  ; RST          ; RST         ; 0.000        ; 0.000      ; 5.260      ;
+; 5.055 ; register_8bit:inst5|data_out[3] ; register_8bit:inst4|data_out[3]  ; RST          ; RST         ; 0.000        ; 0.000      ; 5.276      ;
+; 5.129 ; register_8bit:inst4|data_out[0] ; register_8bit:inst13|data_out[0] ; RST          ; RST         ; 0.000        ; 0.000      ; 5.350      ;
+; 5.231 ; register_8bit:inst3|data_out[1] ; register_8bit:inst3|data_out[1]  ; RST          ; RST         ; 0.000        ; 0.000      ; 5.452      ;
+; 5.312 ; register_8bit:inst4|data_out[7] ; register_8bit:inst3|data_out[7]  ; RST          ; RST         ; 0.000        ; 0.000      ; 5.533      ;
+; 5.322 ; register_8bit:inst4|data_out[0] ; register_8bit:inst13|data_out[1] ; RST          ; RST         ; 0.000        ; 0.000      ; 5.543      ;
+; 5.333 ; register_8bit:inst3|data_out[1] ; register_8bit:inst5|data_out[1]  ; RST          ; RST         ; 0.000        ; 0.000      ; 5.554      ;
+; 5.348 ; register_8bit:inst4|data_out[7] ; register_8bit:inst13|data_out[7] ; RST          ; RST         ; 0.000        ; 0.000      ; 5.569      ;
+; 5.471 ; register_8bit:inst4|data_out[4] ; register_8bit:inst13|data_out[4] ; RST          ; RST         ; 0.000        ; 0.000      ; 5.692      ;
+; 5.520 ; register_8bit:inst5|data_out[7] ; register_8bit:inst4|data_out[7]  ; RST          ; RST         ; 0.000        ; 0.000      ; 5.741      ;
+; 5.531 ; register_8bit:inst4|data_out[3] ; register_8bit:inst13|data_out[3] ; RST          ; RST         ; 0.000        ; 0.000      ; 5.752      ;
+; 5.535 ; register_8bit:inst4|data_out[2] ; register_8bit:inst5|data_out[2]  ; RST          ; RST         ; 0.000        ; 0.000      ; 5.756      ;
+; 5.545 ; register_8bit:inst3|data_out[0] ; register_8bit:inst13|data_out[1] ; RST          ; RST         ; 0.000        ; 0.000      ; 5.766      ;
+; 5.572 ; register_8bit:inst5|data_out[6] ; register_8bit:inst13|data_out[6] ; RST          ; RST         ; 0.000        ; 0.000      ; 5.793      ;
+; 5.610 ; register_8bit:inst4|data_out[1] ; register_8bit:inst4|data_out[1]  ; RST          ; RST         ; 0.000        ; 0.000      ; 5.831      ;
+; 5.612 ; register_8bit:inst5|data_out[4] ; register_8bit:inst5|data_out[4]  ; RST          ; RST         ; 0.000        ; 0.000      ; 5.833      ;
+; 5.623 ; register_8bit:inst3|data_out[5] ; register_8bit:inst3|data_out[5]  ; RST          ; RST         ; 0.000        ; 0.000      ; 5.844      ;
+; 5.644 ; register_8bit:inst3|data_out[5] ; register_8bit:inst13|data_out[5] ; RST          ; RST         ; 0.000        ; 0.000      ; 5.865      ;
+; 5.678 ; register_8bit:inst5|data_out[3] ; register_8bit:inst5|data_out[3]  ; RST          ; RST         ; 0.000        ; 0.000      ; 5.899      ;
+; 5.730 ; register_8bit:inst3|data_out[0] ; register_8bit:inst5|data_out[0]  ; RST          ; RST         ; 0.000        ; 0.000      ; 5.951      ;
+; 5.797 ; register_8bit:inst4|data_out[5] ; register_8bit:inst5|data_out[5]  ; RST          ; RST         ; 0.000        ; 0.000      ; 6.018      ;
+; 5.883 ; register_8bit:inst4|data_out[6] ; register_8bit:inst5|data_out[6]  ; RST          ; RST         ; 0.000        ; 0.000      ; 6.104      ;
+; 5.914 ; register_8bit:inst3|data_out[2] ; register_8bit:inst3|data_out[2]  ; RST          ; RST         ; 0.000        ; 0.000      ; 6.135      ;
+; 5.922 ; register_8bit:inst3|data_out[2] ; register_8bit:inst4|data_out[2]  ; RST          ; RST         ; 0.000        ; 0.000      ; 6.143      ;
+; 5.968 ; register_8bit:inst4|data_out[0] ; register_8bit:inst4|data_out[1]  ; RST          ; RST         ; 0.000        ; 0.000      ; 6.189      ;
+; 6.026 ; register_8bit:inst3|data_out[6] ; register_8bit:inst4|data_out[6]  ; RST          ; RST         ; 0.000        ; 0.000      ; 6.247      ;
+; 6.038 ; register_8bit:inst4|data_out[0] ; register_8bit:inst13|data_out[2] ; RST          ; RST         ; 0.000        ; 0.000      ; 6.259      ;
+; 6.052 ; register_8bit:inst3|data_out[6] ; register_8bit:inst3|data_out[6]  ; RST          ; RST         ; 0.000        ; 0.000      ; 6.273      ;
+; 6.083 ; register_8bit:inst4|data_out[7] ; register_8bit:inst4|data_out[7]  ; RST          ; RST         ; 0.000        ; 0.000      ; 6.304      ;
+; 6.120 ; register_8bit:inst4|data_out[0] ; register_8bit:inst13|data_out[3] ; RST          ; RST         ; 0.000        ; 0.000      ; 6.341      ;
+; 6.123 ; register_8bit:inst3|data_out[2] ; register_8bit:inst13|data_out[3] ; RST          ; RST         ; 0.000        ; 0.000      ; 6.344      ;
+; 6.139 ; register_8bit:inst3|data_out[1] ; register_8bit:inst13|data_out[2] ; RST          ; RST         ; 0.000        ; 0.000      ; 6.360      ;
+; 6.153 ; register_8bit:inst4|data_out[4] ; register_8bit:inst4|data_out[4]  ; RST          ; RST         ; 0.000        ; 0.000      ; 6.374      ;
+; 6.191 ; register_8bit:inst3|data_out[0] ; register_8bit:inst4|data_out[1]  ; RST          ; RST         ; 0.000        ; 0.000      ; 6.412      ;
+; 6.221 ; register_8bit:inst3|data_out[1] ; register_8bit:inst13|data_out[3] ; RST          ; RST         ; 0.000        ; 0.000      ; 6.442      ;
+; 6.235 ; register_8bit:inst4|data_out[0] ; register_8bit:inst5|data_out[0]  ; RST          ; RST         ; 0.000        ; 0.000      ; 6.456      ;
+; 6.261 ; register_8bit:inst3|data_out[0] ; register_8bit:inst13|data_out[2] ; RST          ; RST         ; 0.000        ; 0.000      ; 6.482      ;
+; 6.298 ; register_8bit:inst3|data_out[3] ; register_8bit:inst3|data_out[3]  ; RST          ; RST         ; 0.000        ; 0.000      ; 6.519      ;
+; 6.300 ; register_8bit:inst3|data_out[5] ; register_8bit:inst4|data_out[5]  ; RST          ; RST         ; 0.000        ; 0.000      ; 6.521      ;
+; 6.314 ; register_8bit:inst3|data_out[3] ; register_8bit:inst4|data_out[3]  ; RST          ; RST         ; 0.000        ; 0.000      ; 6.535      ;
+; 6.336 ; register_8bit:inst5|data_out[4] ; register_8bit:inst3|data_out[4]  ; RST          ; RST         ; 0.000        ; 0.000      ; 6.557      ;
+; 6.343 ; register_8bit:inst3|data_out[0] ; register_8bit:inst13|data_out[3] ; RST          ; RST         ; 0.000        ; 0.000      ; 6.564      ;
+; 6.352 ; register_8bit:inst4|data_out[2] ; register_8bit:inst13|data_out[3] ; RST          ; RST         ; 0.000        ; 0.000      ; 6.573      ;
+; 6.376 ; register_8bit:inst4|data_out[1] ; register_8bit:inst13|data_out[2] ; RST          ; RST         ; 0.000        ; 0.000      ; 6.597      ;
+; 6.396 ; register_8bit:inst3|data_out[0] ; register_8bit:inst3|data_out[0]  ; RST          ; RST         ; 0.000        ; 0.000      ; 6.617      ;
+; 6.414 ; register_8bit:inst4|data_out[2] ; register_8bit:inst3|data_out[2]  ; RST          ; RST         ; 0.000        ; 0.000      ; 6.635      ;
+; 6.416 ; register_8bit:inst3|data_out[0] ; register_8bit:inst4|data_out[0]  ; RST          ; RST         ; 0.000        ; 0.000      ; 6.637      ;
+; 6.422 ; register_8bit:inst4|data_out[2] ; register_8bit:inst4|data_out[2]  ; RST          ; RST         ; 0.000        ; 0.000      ; 6.643      ;
+; 6.458 ; register_8bit:inst4|data_out[1] ; register_8bit:inst13|data_out[3] ; RST          ; RST         ; 0.000        ; 0.000      ; 6.679      ;
+; 6.594 ; register_8bit:inst5|data_out[6] ; register_8bit:inst4|data_out[6]  ; RST          ; RST         ; 0.000        ; 0.000      ; 6.815      ;
+; 6.600 ; register_8bit:inst3|data_out[3] ; register_8bit:inst5|data_out[4]  ; RST          ; RST         ; 0.000        ; 0.000      ; 6.821      ;
+; 6.620 ; register_8bit:inst5|data_out[6] ; register_8bit:inst3|data_out[6]  ; RST          ; RST         ; 0.000        ; 0.000      ; 6.841      ;
+; 6.643 ; register_8bit:inst3|data_out[3] ; register_8bit:inst5|data_out[5]  ; RST          ; RST         ; 0.000        ; 0.000      ; 6.864      ;
+; 6.671 ; register_8bit:inst4|data_out[6] ; register_8bit:inst13|data_out[6] ; RST          ; RST         ; 0.000        ; 0.000      ; 6.892      ;
+; 6.681 ; register_8bit:inst4|data_out[1] ; register_8bit:inst3|data_out[1]  ; RST          ; RST         ; 0.000        ; 0.000      ; 6.902      ;
+; 6.770 ; register_8bit:inst4|data_out[0] ; register_8bit:inst5|data_out[4]  ; RST          ; RST         ; 0.000        ; 0.000      ; 6.991      ;
+; 6.773 ; register_8bit:inst3|data_out[2] ; register_8bit:inst5|data_out[4]  ; RST          ; RST         ; 0.000        ; 0.000      ; 6.994      ;
++-------+---------------------------------+----------------------------------+--------------+-------------+--------------+------------+------------+
+
+
++-----------------------------------------------------------------------------------------------------------------------------+
+; Recovery: 'RST'                                                                                                             ;
++--------+-----------+----------------------------------+--------------+-------------+--------------+------------+------------+
+; Slack  ; From Node ; To Node                          ; Launch Clock ; Latch Clock ; Relationship ; Clock Skew ; Data Delay ;
++--------+-----------+----------------------------------+--------------+-------------+--------------+------------+------------+
+; -0.864 ; CLK       ; register_8bit:inst3|data_out[3]  ; CLK          ; RST         ; 0.500        ; 3.348      ; 4.379      ;
+; -0.864 ; CLK       ; register_8bit:inst5|data_out[3]  ; CLK          ; RST         ; 0.500        ; 3.348      ; 4.379      ;
+; -0.864 ; CLK       ; register_8bit:inst13|data_out[3] ; CLK          ; RST         ; 0.500        ; 3.348      ; 4.379      ;
+; -0.864 ; CLK       ; register_8bit:inst3|data_out[2]  ; CLK          ; RST         ; 0.500        ; 3.348      ; 4.379      ;
+; -0.864 ; CLK       ; register_8bit:inst5|data_out[2]  ; CLK          ; RST         ; 0.500        ; 3.348      ; 4.379      ;
+; -0.864 ; CLK       ; register_8bit:inst13|data_out[2] ; CLK          ; RST         ; 0.500        ; 3.348      ; 4.379      ;
+; -0.864 ; CLK       ; register_8bit:inst3|data_out[1]  ; CLK          ; RST         ; 0.500        ; 3.348      ; 4.379      ;
+; -0.864 ; CLK       ; register_8bit:inst5|data_out[1]  ; CLK          ; RST         ; 0.500        ; 3.348      ; 4.379      ;
+; -0.864 ; CLK       ; register_8bit:inst13|data_out[1] ; CLK          ; RST         ; 0.500        ; 3.348      ; 4.379      ;
+; -0.864 ; CLK       ; register_8bit:inst3|data_out[0]  ; CLK          ; RST         ; 0.500        ; 3.348      ; 4.379      ;
+; -0.864 ; CLK       ; register_8bit:inst5|data_out[0]  ; CLK          ; RST         ; 0.500        ; 3.348      ; 4.379      ;
+; -0.864 ; CLK       ; register_8bit:inst13|data_out[0] ; CLK          ; RST         ; 0.500        ; 3.348      ; 4.379      ;
+; -0.864 ; CLK       ; register_8bit:inst3|data_out[7]  ; CLK          ; RST         ; 0.500        ; 3.348      ; 4.379      ;
+; -0.864 ; CLK       ; register_8bit:inst5|data_out[7]  ; CLK          ; RST         ; 0.500        ; 3.348      ; 4.379      ;
+; -0.864 ; CLK       ; register_8bit:inst3|data_out[6]  ; CLK          ; RST         ; 0.500        ; 3.348      ; 4.379      ;
+; -0.864 ; CLK       ; register_8bit:inst5|data_out[6]  ; CLK          ; RST         ; 0.500        ; 3.348      ; 4.379      ;
+; -0.864 ; CLK       ; register_8bit:inst3|data_out[5]  ; CLK          ; RST         ; 0.500        ; 3.348      ; 4.379      ;
+; -0.864 ; CLK       ; register_8bit:inst5|data_out[5]  ; CLK          ; RST         ; 0.500        ; 3.348      ; 4.379      ;
+; -0.864 ; CLK       ; register_8bit:inst3|data_out[4]  ; CLK          ; RST         ; 0.500        ; 3.348      ; 4.379      ;
+; -0.864 ; CLK       ; register_8bit:inst5|data_out[4]  ; CLK          ; RST         ; 0.500        ; 3.348      ; 4.379      ;
+; -0.864 ; CLK       ; register_8bit:inst13|data_out[7] ; CLK          ; RST         ; 0.500        ; 3.348      ; 4.379      ;
+; -0.864 ; CLK       ; register_8bit:inst13|data_out[6] ; CLK          ; RST         ; 0.500        ; 3.348      ; 4.379      ;
+; -0.864 ; CLK       ; register_8bit:inst13|data_out[5] ; CLK          ; RST         ; 0.500        ; 3.348      ; 4.379      ;
+; -0.864 ; CLK       ; register_8bit:inst13|data_out[4] ; CLK          ; RST         ; 0.500        ; 3.348      ; 4.379      ;
+; -0.864 ; CLK       ; register_8bit:inst4|data_out[3]  ; CLK          ; RST         ; 0.500        ; 3.348      ; 4.379      ;
+; -0.864 ; CLK       ; register_8bit:inst4|data_out[2]  ; CLK          ; RST         ; 0.500        ; 3.348      ; 4.379      ;
+; -0.864 ; CLK       ; register_8bit:inst4|data_out[1]  ; CLK          ; RST         ; 0.500        ; 3.348      ; 4.379      ;
+; -0.864 ; CLK       ; register_8bit:inst4|data_out[0]  ; CLK          ; RST         ; 0.500        ; 3.348      ; 4.379      ;
+; -0.864 ; CLK       ; register_8bit:inst4|data_out[7]  ; CLK          ; RST         ; 0.500        ; 3.348      ; 4.379      ;
+; -0.864 ; CLK       ; register_8bit:inst4|data_out[6]  ; CLK          ; RST         ; 0.500        ; 3.348      ; 4.379      ;
+; -0.864 ; CLK       ; register_8bit:inst4|data_out[5]  ; CLK          ; RST         ; 0.500        ; 3.348      ; 4.379      ;
+; -0.864 ; CLK       ; register_8bit:inst4|data_out[4]  ; CLK          ; RST         ; 0.500        ; 3.348      ; 4.379      ;
+; -0.364 ; CLK       ; register_8bit:inst3|data_out[3]  ; CLK          ; RST         ; 1.000        ; 3.348      ; 4.379      ;
+; -0.364 ; CLK       ; register_8bit:inst5|data_out[3]  ; CLK          ; RST         ; 1.000        ; 3.348      ; 4.379      ;
+; -0.364 ; CLK       ; register_8bit:inst13|data_out[3] ; CLK          ; RST         ; 1.000        ; 3.348      ; 4.379      ;
+; -0.364 ; CLK       ; register_8bit:inst3|data_out[2]  ; CLK          ; RST         ; 1.000        ; 3.348      ; 4.379      ;
+; -0.364 ; CLK       ; register_8bit:inst5|data_out[2]  ; CLK          ; RST         ; 1.000        ; 3.348      ; 4.379      ;
+; -0.364 ; CLK       ; register_8bit:inst13|data_out[2] ; CLK          ; RST         ; 1.000        ; 3.348      ; 4.379      ;
+; -0.364 ; CLK       ; register_8bit:inst3|data_out[1]  ; CLK          ; RST         ; 1.000        ; 3.348      ; 4.379      ;
+; -0.364 ; CLK       ; register_8bit:inst5|data_out[1]  ; CLK          ; RST         ; 1.000        ; 3.348      ; 4.379      ;
+; -0.364 ; CLK       ; register_8bit:inst13|data_out[1] ; CLK          ; RST         ; 1.000        ; 3.348      ; 4.379      ;
+; -0.364 ; CLK       ; register_8bit:inst3|data_out[0]  ; CLK          ; RST         ; 1.000        ; 3.348      ; 4.379      ;
+; -0.364 ; CLK       ; register_8bit:inst5|data_out[0]  ; CLK          ; RST         ; 1.000        ; 3.348      ; 4.379      ;
+; -0.364 ; CLK       ; register_8bit:inst13|data_out[0] ; CLK          ; RST         ; 1.000        ; 3.348      ; 4.379      ;
+; -0.364 ; CLK       ; register_8bit:inst3|data_out[7]  ; CLK          ; RST         ; 1.000        ; 3.348      ; 4.379      ;
+; -0.364 ; CLK       ; register_8bit:inst5|data_out[7]  ; CLK          ; RST         ; 1.000        ; 3.348      ; 4.379      ;
+; -0.364 ; CLK       ; register_8bit:inst3|data_out[6]  ; CLK          ; RST         ; 1.000        ; 3.348      ; 4.379      ;
+; -0.364 ; CLK       ; register_8bit:inst5|data_out[6]  ; CLK          ; RST         ; 1.000        ; 3.348      ; 4.379      ;
+; -0.364 ; CLK       ; register_8bit:inst3|data_out[5]  ; CLK          ; RST         ; 1.000        ; 3.348      ; 4.379      ;
+; -0.364 ; CLK       ; register_8bit:inst5|data_out[5]  ; CLK          ; RST         ; 1.000        ; 3.348      ; 4.379      ;
+; -0.364 ; CLK       ; register_8bit:inst3|data_out[4]  ; CLK          ; RST         ; 1.000        ; 3.348      ; 4.379      ;
+; -0.364 ; CLK       ; register_8bit:inst5|data_out[4]  ; CLK          ; RST         ; 1.000        ; 3.348      ; 4.379      ;
+; -0.364 ; CLK       ; register_8bit:inst13|data_out[7] ; CLK          ; RST         ; 1.000        ; 3.348      ; 4.379      ;
+; -0.364 ; CLK       ; register_8bit:inst13|data_out[6] ; CLK          ; RST         ; 1.000        ; 3.348      ; 4.379      ;
+; -0.364 ; CLK       ; register_8bit:inst13|data_out[5] ; CLK          ; RST         ; 1.000        ; 3.348      ; 4.379      ;
+; -0.364 ; CLK       ; register_8bit:inst13|data_out[4] ; CLK          ; RST         ; 1.000        ; 3.348      ; 4.379      ;
+; -0.364 ; CLK       ; register_8bit:inst4|data_out[3]  ; CLK          ; RST         ; 1.000        ; 3.348      ; 4.379      ;
+; -0.364 ; CLK       ; register_8bit:inst4|data_out[2]  ; CLK          ; RST         ; 1.000        ; 3.348      ; 4.379      ;
+; -0.364 ; CLK       ; register_8bit:inst4|data_out[1]  ; CLK          ; RST         ; 1.000        ; 3.348      ; 4.379      ;
+; -0.364 ; CLK       ; register_8bit:inst4|data_out[0]  ; CLK          ; RST         ; 1.000        ; 3.348      ; 4.379      ;
+; -0.364 ; CLK       ; register_8bit:inst4|data_out[7]  ; CLK          ; RST         ; 1.000        ; 3.348      ; 4.379      ;
+; -0.364 ; CLK       ; register_8bit:inst4|data_out[6]  ; CLK          ; RST         ; 1.000        ; 3.348      ; 4.379      ;
+; -0.364 ; CLK       ; register_8bit:inst4|data_out[5]  ; CLK          ; RST         ; 1.000        ; 3.348      ; 4.379      ;
+; -0.364 ; CLK       ; register_8bit:inst4|data_out[4]  ; CLK          ; RST         ; 1.000        ; 3.348      ; 4.379      ;
++--------+-----------+----------------------------------+--------------+-------------+--------------+------------+------------+
+
+
++-----------------------------------------------------------------------------------------------------------------------+
+; Recovery: 'CLK'                                                                                                       ;
++--------+-----------+----------------------------+--------------+-------------+--------------+------------+------------+
+; Slack  ; From Node ; To Node                    ; Launch Clock ; Latch Clock ; Relationship ; Clock Skew ; Data Delay ;
++--------+-----------+----------------------------+--------------+-------------+--------------+------------+------------+
+; -0.864 ; RST       ; MAR_8bit:inst2|data_out[7] ; RST          ; CLK         ; 0.500        ; 3.348      ; 4.379      ;
+; -0.864 ; RST       ; MAR_8bit:inst2|data_out[6] ; RST          ; CLK         ; 0.500        ; 3.348      ; 4.379      ;
+; -0.864 ; RST       ; MAR_8bit:inst2|data_out[5] ; RST          ; CLK         ; 0.500        ; 3.348      ; 4.379      ;
+; -0.864 ; RST       ; MAR_8bit:inst2|data_out[4] ; RST          ; CLK         ; 0.500        ; 3.348      ; 4.379      ;
+; -0.864 ; RST       ; MAR_8bit:inst2|data_out[3] ; RST          ; CLK         ; 0.500        ; 3.348      ; 4.379      ;
+; -0.864 ; RST       ; MAR_8bit:inst2|data_out[2] ; RST          ; CLK         ; 0.500        ; 3.348      ; 4.379      ;
+; -0.864 ; RST       ; MAR_8bit:inst2|data_out[1] ; RST          ; CLK         ; 0.500        ; 3.348      ; 4.379      ;
+; -0.864 ; RST       ; MAR_8bit:inst2|data_out[0] ; RST          ; CLK         ; 0.500        ; 3.348      ; 4.379      ;
+; -0.864 ; RST       ; counter_8bit:inst|count[7] ; RST          ; CLK         ; 0.500        ; 3.348      ; 4.379      ;
+; -0.864 ; RST       ; counter_8bit:inst|count[4] ; RST          ; CLK         ; 0.500        ; 3.348      ; 4.379      ;
+; -0.864 ; RST       ; counter_8bit:inst|count[6] ; RST          ; CLK         ; 0.500        ; 3.348      ; 4.379      ;
+; -0.864 ; RST       ; counter_8bit:inst|count[5] ; RST          ; CLK         ; 0.500        ; 3.348      ; 4.379      ;
+; -0.864 ; RST       ; counter_8bit:inst|count[3] ; RST          ; CLK         ; 0.500        ; 3.348      ; 4.379      ;
+; -0.864 ; RST       ; counter_8bit:inst|count[2] ; RST          ; CLK         ; 0.500        ; 3.348      ; 4.379      ;
+; -0.864 ; RST       ; counter_8bit:inst|count[1] ; RST          ; CLK         ; 0.500        ; 3.348      ; 4.379      ;
+; -0.864 ; RST       ; counter_8bit:inst|count[0] ; RST          ; CLK         ; 0.500        ; 3.348      ; 4.379      ;
+; -0.364 ; RST       ; MAR_8bit:inst2|data_out[7] ; RST          ; CLK         ; 1.000        ; 3.348      ; 4.379      ;
+; -0.364 ; RST       ; MAR_8bit:inst2|data_out[6] ; RST          ; CLK         ; 1.000        ; 3.348      ; 4.379      ;
+; -0.364 ; RST       ; MAR_8bit:inst2|data_out[5] ; RST          ; CLK         ; 1.000        ; 3.348      ; 4.379      ;
+; -0.364 ; RST       ; MAR_8bit:inst2|data_out[4] ; RST          ; CLK         ; 1.000        ; 3.348      ; 4.379      ;
+; -0.364 ; RST       ; MAR_8bit:inst2|data_out[3] ; RST          ; CLK         ; 1.000        ; 3.348      ; 4.379      ;
+; -0.364 ; RST       ; MAR_8bit:inst2|data_out[2] ; RST          ; CLK         ; 1.000        ; 3.348      ; 4.379      ;
+; -0.364 ; RST       ; MAR_8bit:inst2|data_out[1] ; RST          ; CLK         ; 1.000        ; 3.348      ; 4.379      ;
+; -0.364 ; RST       ; MAR_8bit:inst2|data_out[0] ; RST          ; CLK         ; 1.000        ; 3.348      ; 4.379      ;
+; -0.364 ; RST       ; counter_8bit:inst|count[7] ; RST          ; CLK         ; 1.000        ; 3.348      ; 4.379      ;
+; -0.364 ; RST       ; counter_8bit:inst|count[4] ; RST          ; CLK         ; 1.000        ; 3.348      ; 4.379      ;
+; -0.364 ; RST       ; counter_8bit:inst|count[6] ; RST          ; CLK         ; 1.000        ; 3.348      ; 4.379      ;
+; -0.364 ; RST       ; counter_8bit:inst|count[5] ; RST          ; CLK         ; 1.000        ; 3.348      ; 4.379      ;
+; -0.364 ; RST       ; counter_8bit:inst|count[3] ; RST          ; CLK         ; 1.000        ; 3.348      ; 4.379      ;
+; -0.364 ; RST       ; counter_8bit:inst|count[2] ; RST          ; CLK         ; 1.000        ; 3.348      ; 4.379      ;
+; -0.364 ; RST       ; counter_8bit:inst|count[1] ; RST          ; CLK         ; 1.000        ; 3.348      ; 4.379      ;
+; -0.364 ; RST       ; counter_8bit:inst|count[0] ; RST          ; CLK         ; 1.000        ; 3.348      ; 4.379      ;
++--------+-----------+----------------------------+--------------+-------------+--------------+------------+------------+
+
+
++----------------------------------------------------------------------------------------------------------------------+
+; Removal: 'CLK'                                                                                                       ;
++-------+-----------+----------------------------+--------------+-------------+--------------+------------+------------+
+; Slack ; From Node ; To Node                    ; Launch Clock ; Latch Clock ; Relationship ; Clock Skew ; Data Delay ;
++-------+-----------+----------------------------+--------------+-------------+--------------+------------+------------+
+; 0.810 ; RST       ; MAR_8bit:inst2|data_out[7] ; RST          ; CLK         ; 0.000        ; 3.348      ; 4.379      ;
+; 0.810 ; RST       ; MAR_8bit:inst2|data_out[6] ; RST          ; CLK         ; 0.000        ; 3.348      ; 4.379      ;
+; 0.810 ; RST       ; MAR_8bit:inst2|data_out[5] ; RST          ; CLK         ; 0.000        ; 3.348      ; 4.379      ;
+; 0.810 ; RST       ; MAR_8bit:inst2|data_out[4] ; RST          ; CLK         ; 0.000        ; 3.348      ; 4.379      ;
+; 0.810 ; RST       ; MAR_8bit:inst2|data_out[3] ; RST          ; CLK         ; 0.000        ; 3.348      ; 4.379      ;
+; 0.810 ; RST       ; MAR_8bit:inst2|data_out[2] ; RST          ; CLK         ; 0.000        ; 3.348      ; 4.379      ;
+; 0.810 ; RST       ; MAR_8bit:inst2|data_out[1] ; RST          ; CLK         ; 0.000        ; 3.348      ; 4.379      ;
+; 0.810 ; RST       ; MAR_8bit:inst2|data_out[0] ; RST          ; CLK         ; 0.000        ; 3.348      ; 4.379      ;
+; 0.810 ; RST       ; counter_8bit:inst|count[7] ; RST          ; CLK         ; 0.000        ; 3.348      ; 4.379      ;
+; 0.810 ; RST       ; counter_8bit:inst|count[4] ; RST          ; CLK         ; 0.000        ; 3.348      ; 4.379      ;
+; 0.810 ; RST       ; counter_8bit:inst|count[6] ; RST          ; CLK         ; 0.000        ; 3.348      ; 4.379      ;
+; 0.810 ; RST       ; counter_8bit:inst|count[5] ; RST          ; CLK         ; 0.000        ; 3.348      ; 4.379      ;
+; 0.810 ; RST       ; counter_8bit:inst|count[3] ; RST          ; CLK         ; 0.000        ; 3.348      ; 4.379      ;
+; 0.810 ; RST       ; counter_8bit:inst|count[2] ; RST          ; CLK         ; 0.000        ; 3.348      ; 4.379      ;
+; 0.810 ; RST       ; counter_8bit:inst|count[1] ; RST          ; CLK         ; 0.000        ; 3.348      ; 4.379      ;
+; 0.810 ; RST       ; counter_8bit:inst|count[0] ; RST          ; CLK         ; 0.000        ; 3.348      ; 4.379      ;
+; 1.310 ; RST       ; MAR_8bit:inst2|data_out[7] ; RST          ; CLK         ; -0.500       ; 3.348      ; 4.379      ;
+; 1.310 ; RST       ; MAR_8bit:inst2|data_out[6] ; RST          ; CLK         ; -0.500       ; 3.348      ; 4.379      ;
+; 1.310 ; RST       ; MAR_8bit:inst2|data_out[5] ; RST          ; CLK         ; -0.500       ; 3.348      ; 4.379      ;
+; 1.310 ; RST       ; MAR_8bit:inst2|data_out[4] ; RST          ; CLK         ; -0.500       ; 3.348      ; 4.379      ;
+; 1.310 ; RST       ; MAR_8bit:inst2|data_out[3] ; RST          ; CLK         ; -0.500       ; 3.348      ; 4.379      ;
+; 1.310 ; RST       ; MAR_8bit:inst2|data_out[2] ; RST          ; CLK         ; -0.500       ; 3.348      ; 4.379      ;
+; 1.310 ; RST       ; MAR_8bit:inst2|data_out[1] ; RST          ; CLK         ; -0.500       ; 3.348      ; 4.379      ;
+; 1.310 ; RST       ; MAR_8bit:inst2|data_out[0] ; RST          ; CLK         ; -0.500       ; 3.348      ; 4.379      ;
+; 1.310 ; RST       ; counter_8bit:inst|count[7] ; RST          ; CLK         ; -0.500       ; 3.348      ; 4.379      ;
+; 1.310 ; RST       ; counter_8bit:inst|count[4] ; RST          ; CLK         ; -0.500       ; 3.348      ; 4.379      ;
+; 1.310 ; RST       ; counter_8bit:inst|count[6] ; RST          ; CLK         ; -0.500       ; 3.348      ; 4.379      ;
+; 1.310 ; RST       ; counter_8bit:inst|count[5] ; RST          ; CLK         ; -0.500       ; 3.348      ; 4.379      ;
+; 1.310 ; RST       ; counter_8bit:inst|count[3] ; RST          ; CLK         ; -0.500       ; 3.348      ; 4.379      ;
+; 1.310 ; RST       ; counter_8bit:inst|count[2] ; RST          ; CLK         ; -0.500       ; 3.348      ; 4.379      ;
+; 1.310 ; RST       ; counter_8bit:inst|count[1] ; RST          ; CLK         ; -0.500       ; 3.348      ; 4.379      ;
+; 1.310 ; RST       ; counter_8bit:inst|count[0] ; RST          ; CLK         ; -0.500       ; 3.348      ; 4.379      ;
++-------+-----------+----------------------------+--------------+-------------+--------------+------------+------------+
+
+
++----------------------------------------------------------------------------------------------------------------------------+
+; Removal: 'RST'                                                                                                             ;
++-------+-----------+----------------------------------+--------------+-------------+--------------+------------+------------+
+; Slack ; From Node ; To Node                          ; Launch Clock ; Latch Clock ; Relationship ; Clock Skew ; Data Delay ;
++-------+-----------+----------------------------------+--------------+-------------+--------------+------------+------------+
+; 0.810 ; CLK       ; register_8bit:inst3|data_out[3]  ; CLK          ; RST         ; 0.000        ; 3.348      ; 4.379      ;
+; 0.810 ; CLK       ; register_8bit:inst5|data_out[3]  ; CLK          ; RST         ; 0.000        ; 3.348      ; 4.379      ;
+; 0.810 ; CLK       ; register_8bit:inst13|data_out[3] ; CLK          ; RST         ; 0.000        ; 3.348      ; 4.379      ;
+; 0.810 ; CLK       ; register_8bit:inst3|data_out[2]  ; CLK          ; RST         ; 0.000        ; 3.348      ; 4.379      ;
+; 0.810 ; CLK       ; register_8bit:inst5|data_out[2]  ; CLK          ; RST         ; 0.000        ; 3.348      ; 4.379      ;
+; 0.810 ; CLK       ; register_8bit:inst13|data_out[2] ; CLK          ; RST         ; 0.000        ; 3.348      ; 4.379      ;
+; 0.810 ; CLK       ; register_8bit:inst3|data_out[1]  ; CLK          ; RST         ; 0.000        ; 3.348      ; 4.379      ;
+; 0.810 ; CLK       ; register_8bit:inst5|data_out[1]  ; CLK          ; RST         ; 0.000        ; 3.348      ; 4.379      ;
+; 0.810 ; CLK       ; register_8bit:inst13|data_out[1] ; CLK          ; RST         ; 0.000        ; 3.348      ; 4.379      ;
+; 0.810 ; CLK       ; register_8bit:inst3|data_out[0]  ; CLK          ; RST         ; 0.000        ; 3.348      ; 4.379      ;
+; 0.810 ; CLK       ; register_8bit:inst5|data_out[0]  ; CLK          ; RST         ; 0.000        ; 3.348      ; 4.379      ;
+; 0.810 ; CLK       ; register_8bit:inst13|data_out[0] ; CLK          ; RST         ; 0.000        ; 3.348      ; 4.379      ;
+; 0.810 ; CLK       ; register_8bit:inst3|data_out[7]  ; CLK          ; RST         ; 0.000        ; 3.348      ; 4.379      ;
+; 0.810 ; CLK       ; register_8bit:inst5|data_out[7]  ; CLK          ; RST         ; 0.000        ; 3.348      ; 4.379      ;
+; 0.810 ; CLK       ; register_8bit:inst3|data_out[6]  ; CLK          ; RST         ; 0.000        ; 3.348      ; 4.379      ;
+; 0.810 ; CLK       ; register_8bit:inst5|data_out[6]  ; CLK          ; RST         ; 0.000        ; 3.348      ; 4.379      ;
+; 0.810 ; CLK       ; register_8bit:inst3|data_out[5]  ; CLK          ; RST         ; 0.000        ; 3.348      ; 4.379      ;
+; 0.810 ; CLK       ; register_8bit:inst5|data_out[5]  ; CLK          ; RST         ; 0.000        ; 3.348      ; 4.379      ;
+; 0.810 ; CLK       ; register_8bit:inst3|data_out[4]  ; CLK          ; RST         ; 0.000        ; 3.348      ; 4.379      ;
+; 0.810 ; CLK       ; register_8bit:inst5|data_out[4]  ; CLK          ; RST         ; 0.000        ; 3.348      ; 4.379      ;
+; 0.810 ; CLK       ; register_8bit:inst13|data_out[7] ; CLK          ; RST         ; 0.000        ; 3.348      ; 4.379      ;
+; 0.810 ; CLK       ; register_8bit:inst13|data_out[6] ; CLK          ; RST         ; 0.000        ; 3.348      ; 4.379      ;
+; 0.810 ; CLK       ; register_8bit:inst13|data_out[5] ; CLK          ; RST         ; 0.000        ; 3.348      ; 4.379      ;
+; 0.810 ; CLK       ; register_8bit:inst13|data_out[4] ; CLK          ; RST         ; 0.000        ; 3.348      ; 4.379      ;
+; 0.810 ; CLK       ; register_8bit:inst4|data_out[3]  ; CLK          ; RST         ; 0.000        ; 3.348      ; 4.379      ;
+; 0.810 ; CLK       ; register_8bit:inst4|data_out[2]  ; CLK          ; RST         ; 0.000        ; 3.348      ; 4.379      ;
+; 0.810 ; CLK       ; register_8bit:inst4|data_out[1]  ; CLK          ; RST         ; 0.000        ; 3.348      ; 4.379      ;
+; 0.810 ; CLK       ; register_8bit:inst4|data_out[0]  ; CLK          ; RST         ; 0.000        ; 3.348      ; 4.379      ;
+; 0.810 ; CLK       ; register_8bit:inst4|data_out[7]  ; CLK          ; RST         ; 0.000        ; 3.348      ; 4.379      ;
+; 0.810 ; CLK       ; register_8bit:inst4|data_out[6]  ; CLK          ; RST         ; 0.000        ; 3.348      ; 4.379      ;
+; 0.810 ; CLK       ; register_8bit:inst4|data_out[5]  ; CLK          ; RST         ; 0.000        ; 3.348      ; 4.379      ;
+; 0.810 ; CLK       ; register_8bit:inst4|data_out[4]  ; CLK          ; RST         ; 0.000        ; 3.348      ; 4.379      ;
+; 1.310 ; CLK       ; register_8bit:inst3|data_out[3]  ; CLK          ; RST         ; -0.500       ; 3.348      ; 4.379      ;
+; 1.310 ; CLK       ; register_8bit:inst5|data_out[3]  ; CLK          ; RST         ; -0.500       ; 3.348      ; 4.379      ;
+; 1.310 ; CLK       ; register_8bit:inst13|data_out[3] ; CLK          ; RST         ; -0.500       ; 3.348      ; 4.379      ;
+; 1.310 ; CLK       ; register_8bit:inst3|data_out[2]  ; CLK          ; RST         ; -0.500       ; 3.348      ; 4.379      ;
+; 1.310 ; CLK       ; register_8bit:inst5|data_out[2]  ; CLK          ; RST         ; -0.500       ; 3.348      ; 4.379      ;
+; 1.310 ; CLK       ; register_8bit:inst13|data_out[2] ; CLK          ; RST         ; -0.500       ; 3.348      ; 4.379      ;
+; 1.310 ; CLK       ; register_8bit:inst3|data_out[1]  ; CLK          ; RST         ; -0.500       ; 3.348      ; 4.379      ;
+; 1.310 ; CLK       ; register_8bit:inst5|data_out[1]  ; CLK          ; RST         ; -0.500       ; 3.348      ; 4.379      ;
+; 1.310 ; CLK       ; register_8bit:inst13|data_out[1] ; CLK          ; RST         ; -0.500       ; 3.348      ; 4.379      ;
+; 1.310 ; CLK       ; register_8bit:inst3|data_out[0]  ; CLK          ; RST         ; -0.500       ; 3.348      ; 4.379      ;
+; 1.310 ; CLK       ; register_8bit:inst5|data_out[0]  ; CLK          ; RST         ; -0.500       ; 3.348      ; 4.379      ;
+; 1.310 ; CLK       ; register_8bit:inst13|data_out[0] ; CLK          ; RST         ; -0.500       ; 3.348      ; 4.379      ;
+; 1.310 ; CLK       ; register_8bit:inst3|data_out[7]  ; CLK          ; RST         ; -0.500       ; 3.348      ; 4.379      ;
+; 1.310 ; CLK       ; register_8bit:inst5|data_out[7]  ; CLK          ; RST         ; -0.500       ; 3.348      ; 4.379      ;
+; 1.310 ; CLK       ; register_8bit:inst3|data_out[6]  ; CLK          ; RST         ; -0.500       ; 3.348      ; 4.379      ;
+; 1.310 ; CLK       ; register_8bit:inst5|data_out[6]  ; CLK          ; RST         ; -0.500       ; 3.348      ; 4.379      ;
+; 1.310 ; CLK       ; register_8bit:inst3|data_out[5]  ; CLK          ; RST         ; -0.500       ; 3.348      ; 4.379      ;
+; 1.310 ; CLK       ; register_8bit:inst5|data_out[5]  ; CLK          ; RST         ; -0.500       ; 3.348      ; 4.379      ;
+; 1.310 ; CLK       ; register_8bit:inst3|data_out[4]  ; CLK          ; RST         ; -0.500       ; 3.348      ; 4.379      ;
+; 1.310 ; CLK       ; register_8bit:inst5|data_out[4]  ; CLK          ; RST         ; -0.500       ; 3.348      ; 4.379      ;
+; 1.310 ; CLK       ; register_8bit:inst13|data_out[7] ; CLK          ; RST         ; -0.500       ; 3.348      ; 4.379      ;
+; 1.310 ; CLK       ; register_8bit:inst13|data_out[6] ; CLK          ; RST         ; -0.500       ; 3.348      ; 4.379      ;
+; 1.310 ; CLK       ; register_8bit:inst13|data_out[5] ; CLK          ; RST         ; -0.500       ; 3.348      ; 4.379      ;
+; 1.310 ; CLK       ; register_8bit:inst13|data_out[4] ; CLK          ; RST         ; -0.500       ; 3.348      ; 4.379      ;
+; 1.310 ; CLK       ; register_8bit:inst4|data_out[3]  ; CLK          ; RST         ; -0.500       ; 3.348      ; 4.379      ;
+; 1.310 ; CLK       ; register_8bit:inst4|data_out[2]  ; CLK          ; RST         ; -0.500       ; 3.348      ; 4.379      ;
+; 1.310 ; CLK       ; register_8bit:inst4|data_out[1]  ; CLK          ; RST         ; -0.500       ; 3.348      ; 4.379      ;
+; 1.310 ; CLK       ; register_8bit:inst4|data_out[0]  ; CLK          ; RST         ; -0.500       ; 3.348      ; 4.379      ;
+; 1.310 ; CLK       ; register_8bit:inst4|data_out[7]  ; CLK          ; RST         ; -0.500       ; 3.348      ; 4.379      ;
+; 1.310 ; CLK       ; register_8bit:inst4|data_out[6]  ; CLK          ; RST         ; -0.500       ; 3.348      ; 4.379      ;
+; 1.310 ; CLK       ; register_8bit:inst4|data_out[5]  ; CLK          ; RST         ; -0.500       ; 3.348      ; 4.379      ;
+; 1.310 ; CLK       ; register_8bit:inst4|data_out[4]  ; CLK          ; RST         ; -0.500       ; 3.348      ; 4.379      ;
++-------+-----------+----------------------------------+--------------+-------------+--------------+------------+------------+
+
+
++-------------------------------------------------------------------+
+; Setup Transfers                                                   ;
++------------+----------+----------+----------+----------+----------+
+; From Clock ; To Clock ; RR Paths ; FR Paths ; RF Paths ; FF Paths ;
++------------+----------+----------+----------+----------+----------+
+; CLK        ; CLK      ; 69       ; 0        ; 0        ; 0        ;
+; RST        ; CLK      ; 4        ; 0        ; 0        ; 0        ;
+; RST        ; RST      ; 576      ; 0        ; 0        ; 0        ;
++------------+----------+----------+----------+----------+----------+
+Entries labeled "false path" only account for clock-to-clock false paths and not path-based false paths. As a result, actual path counts may be lower than reported.
+
+
++-------------------------------------------------------------------+
+; Hold Transfers                                                    ;
++------------+----------+----------+----------+----------+----------+
+; From Clock ; To Clock ; RR Paths ; FR Paths ; RF Paths ; FF Paths ;
++------------+----------+----------+----------+----------+----------+
+; CLK        ; CLK      ; 69       ; 0        ; 0        ; 0        ;
+; RST        ; CLK      ; 4        ; 0        ; 0        ; 0        ;
+; RST        ; RST      ; 576      ; 0        ; 0        ; 0        ;
++------------+----------+----------+----------+----------+----------+
+Entries labeled "false path" only account for clock-to-clock false paths and not path-based false paths. As a result, actual path counts may be lower than reported.
+
+
++-------------------------------------------------------------------+
+; Recovery Transfers                                                ;
++------------+----------+----------+----------+----------+----------+
+; From Clock ; To Clock ; RR Paths ; FR Paths ; RF Paths ; FF Paths ;
++------------+----------+----------+----------+----------+----------+
+; RST        ; CLK      ; 16       ; 16       ; 0        ; 0        ;
+; CLK        ; RST      ; 32       ; 32       ; 0        ; 0        ;
++------------+----------+----------+----------+----------+----------+
+Entries labeled "false path" only account for clock-to-clock false paths and not path-based false paths. As a result, actual path counts may be lower than reported.
+
+
++-------------------------------------------------------------------+
+; Removal Transfers                                                 ;
++------------+----------+----------+----------+----------+----------+
+; From Clock ; To Clock ; RR Paths ; FR Paths ; RF Paths ; FF Paths ;
++------------+----------+----------+----------+----------+----------+
+; RST        ; CLK      ; 16       ; 16       ; 0        ; 0        ;
+; CLK        ; RST      ; 32       ; 32       ; 0        ; 0        ;
++------------+----------+----------+----------+----------+----------+
+Entries labeled "false path" only account for clock-to-clock false paths and not path-based false paths. As a result, actual path counts may be lower than reported.
 
 
 ---------------
@@ -140,11 +777,135 @@ No non-DPA dedicated SERDES Receiver circuitry present in device or used in desi
 +---------------------------------+-------+------+
 ; Illegal Clocks                  ; 0     ; 0    ;
 ; Unconstrained Clocks            ; 0     ; 0    ;
-; Unconstrained Input Ports       ; 0     ; 0    ;
-; Unconstrained Input Port Paths  ; 0     ; 0    ;
-; Unconstrained Output Ports      ; 0     ; 0    ;
-; Unconstrained Output Port Paths ; 0     ; 0    ;
+; Unconstrained Input Ports       ; 21    ; 21   ;
+; Unconstrained Input Port Paths  ; 276   ; 276  ;
+; Unconstrained Output Ports      ; 20    ; 20   ;
+; Unconstrained Output Port Paths ; 20    ; 20   ;
 +---------------------------------+-------+------+
+
+
++-------------------------------------+
+; Clock Status Summary                ;
++--------+-------+------+-------------+
+; Target ; Clock ; Type ; Status      ;
++--------+-------+------+-------------+
+; CLK    ; CLK   ; Base ; Constrained ;
+; RST    ; RST   ; Base ; Constrained ;
++--------+-------+------+-------------+
+
+
++---------------------------------------------------------------------------------------------------+
+; Unconstrained Input Ports                                                                         ;
++------------+--------------------------------------------------------------------------------------+
+; Input Port ; Comment                                                                              ;
++------------+--------------------------------------------------------------------------------------+
+; Data[0]    ; No input delay, min/max delays, false-path exceptions, or max skew assignments found ;
+; Data[1]    ; No input delay, min/max delays, false-path exceptions, or max skew assignments found ;
+; Data[2]    ; No input delay, min/max delays, false-path exceptions, or max skew assignments found ;
+; Data[3]    ; No input delay, min/max delays, false-path exceptions, or max skew assignments found ;
+; Data[4]    ; No input delay, min/max delays, false-path exceptions, or max skew assignments found ;
+; Data[5]    ; No input delay, min/max delays, false-path exceptions, or max skew assignments found ;
+; Data[6]    ; No input delay, min/max delays, false-path exceptions, or max skew assignments found ;
+; Data[7]    ; No input delay, min/max delays, false-path exceptions, or max skew assignments found ;
+; ISA[0]     ; No input delay, min/max delays, false-path exceptions, or max skew assignments found ;
+; ISA[1]     ; No input delay, min/max delays, false-path exceptions, or max skew assignments found ;
+; ISA[2]     ; No input delay, min/max delays, false-path exceptions, or max skew assignments found ;
+; ISA[3]     ; No input delay, min/max delays, false-path exceptions, or max skew assignments found ;
+; ISA[5]     ; No input delay, min/max delays, false-path exceptions, or max skew assignments found ;
+; ISA[6]     ; No input delay, min/max delays, false-path exceptions, or max skew assignments found ;
+; ISA[7]     ; No input delay, min/max delays, false-path exceptions, or max skew assignments found ;
+; ISA[8]     ; No input delay, min/max delays, false-path exceptions, or max skew assignments found ;
+; ISA[9]     ; No input delay, min/max delays, false-path exceptions, or max skew assignments found ;
+; ISA[10]    ; No input delay, min/max delays, false-path exceptions, or max skew assignments found ;
+; ISA[11]    ; No input delay, min/max delays, false-path exceptions, or max skew assignments found ;
+; ISA[12]    ; No input delay, min/max delays, false-path exceptions, or max skew assignments found ;
+; ISA[14]    ; No input delay, min/max delays, false-path exceptions, or max skew assignments found ;
++------------+--------------------------------------------------------------------------------------+
+
+
++-----------------------------------------------------------------------------------------------------+
+; Unconstrained Output Ports                                                                          ;
++-------------+---------------------------------------------------------------------------------------+
+; Output Port ; Comment                                                                               ;
++-------------+---------------------------------------------------------------------------------------+
+; Addr[0]     ; No output delay, min/max delays, false-path exceptions, or max skew assignments found ;
+; Addr[1]     ; No output delay, min/max delays, false-path exceptions, or max skew assignments found ;
+; Addr[2]     ; No output delay, min/max delays, false-path exceptions, or max skew assignments found ;
+; Addr[3]     ; No output delay, min/max delays, false-path exceptions, or max skew assignments found ;
+; Addr[4]     ; No output delay, min/max delays, false-path exceptions, or max skew assignments found ;
+; Addr[5]     ; No output delay, min/max delays, false-path exceptions, or max skew assignments found ;
+; Addr[6]     ; No output delay, min/max delays, false-path exceptions, or max skew assignments found ;
+; Addr[7]     ; No output delay, min/max delays, false-path exceptions, or max skew assignments found ;
+; ISA_Addr[6] ; No output delay, min/max delays, false-path exceptions, or max skew assignments found ;
+; ISA_Addr[7] ; No output delay, min/max delays, false-path exceptions, or max skew assignments found ;
+; ISA_Addr[8] ; No output delay, min/max delays, false-path exceptions, or max skew assignments found ;
+; ISA_Addr[9] ; No output delay, min/max delays, false-path exceptions, or max skew assignments found ;
+; REGZ[0]     ; No output delay, min/max delays, false-path exceptions, or max skew assignments found ;
+; REGZ[1]     ; No output delay, min/max delays, false-path exceptions, or max skew assignments found ;
+; REGZ[2]     ; No output delay, min/max delays, false-path exceptions, or max skew assignments found ;
+; REGZ[3]     ; No output delay, min/max delays, false-path exceptions, or max skew assignments found ;
+; REGZ[4]     ; No output delay, min/max delays, false-path exceptions, or max skew assignments found ;
+; REGZ[5]     ; No output delay, min/max delays, false-path exceptions, or max skew assignments found ;
+; REGZ[6]     ; No output delay, min/max delays, false-path exceptions, or max skew assignments found ;
+; REGZ[7]     ; No output delay, min/max delays, false-path exceptions, or max skew assignments found ;
++-------------+---------------------------------------------------------------------------------------+
+
+
++---------------------------------------------------------------------------------------------------+
+; Unconstrained Input Ports                                                                         ;
++------------+--------------------------------------------------------------------------------------+
+; Input Port ; Comment                                                                              ;
++------------+--------------------------------------------------------------------------------------+
+; Data[0]    ; No input delay, min/max delays, false-path exceptions, or max skew assignments found ;
+; Data[1]    ; No input delay, min/max delays, false-path exceptions, or max skew assignments found ;
+; Data[2]    ; No input delay, min/max delays, false-path exceptions, or max skew assignments found ;
+; Data[3]    ; No input delay, min/max delays, false-path exceptions, or max skew assignments found ;
+; Data[4]    ; No input delay, min/max delays, false-path exceptions, or max skew assignments found ;
+; Data[5]    ; No input delay, min/max delays, false-path exceptions, or max skew assignments found ;
+; Data[6]    ; No input delay, min/max delays, false-path exceptions, or max skew assignments found ;
+; Data[7]    ; No input delay, min/max delays, false-path exceptions, or max skew assignments found ;
+; ISA[0]     ; No input delay, min/max delays, false-path exceptions, or max skew assignments found ;
+; ISA[1]     ; No input delay, min/max delays, false-path exceptions, or max skew assignments found ;
+; ISA[2]     ; No input delay, min/max delays, false-path exceptions, or max skew assignments found ;
+; ISA[3]     ; No input delay, min/max delays, false-path exceptions, or max skew assignments found ;
+; ISA[5]     ; No input delay, min/max delays, false-path exceptions, or max skew assignments found ;
+; ISA[6]     ; No input delay, min/max delays, false-path exceptions, or max skew assignments found ;
+; ISA[7]     ; No input delay, min/max delays, false-path exceptions, or max skew assignments found ;
+; ISA[8]     ; No input delay, min/max delays, false-path exceptions, or max skew assignments found ;
+; ISA[9]     ; No input delay, min/max delays, false-path exceptions, or max skew assignments found ;
+; ISA[10]    ; No input delay, min/max delays, false-path exceptions, or max skew assignments found ;
+; ISA[11]    ; No input delay, min/max delays, false-path exceptions, or max skew assignments found ;
+; ISA[12]    ; No input delay, min/max delays, false-path exceptions, or max skew assignments found ;
+; ISA[14]    ; No input delay, min/max delays, false-path exceptions, or max skew assignments found ;
++------------+--------------------------------------------------------------------------------------+
+
+
++-----------------------------------------------------------------------------------------------------+
+; Unconstrained Output Ports                                                                          ;
++-------------+---------------------------------------------------------------------------------------+
+; Output Port ; Comment                                                                               ;
++-------------+---------------------------------------------------------------------------------------+
+; Addr[0]     ; No output delay, min/max delays, false-path exceptions, or max skew assignments found ;
+; Addr[1]     ; No output delay, min/max delays, false-path exceptions, or max skew assignments found ;
+; Addr[2]     ; No output delay, min/max delays, false-path exceptions, or max skew assignments found ;
+; Addr[3]     ; No output delay, min/max delays, false-path exceptions, or max skew assignments found ;
+; Addr[4]     ; No output delay, min/max delays, false-path exceptions, or max skew assignments found ;
+; Addr[5]     ; No output delay, min/max delays, false-path exceptions, or max skew assignments found ;
+; Addr[6]     ; No output delay, min/max delays, false-path exceptions, or max skew assignments found ;
+; Addr[7]     ; No output delay, min/max delays, false-path exceptions, or max skew assignments found ;
+; ISA_Addr[6] ; No output delay, min/max delays, false-path exceptions, or max skew assignments found ;
+; ISA_Addr[7] ; No output delay, min/max delays, false-path exceptions, or max skew assignments found ;
+; ISA_Addr[8] ; No output delay, min/max delays, false-path exceptions, or max skew assignments found ;
+; ISA_Addr[9] ; No output delay, min/max delays, false-path exceptions, or max skew assignments found ;
+; REGZ[0]     ; No output delay, min/max delays, false-path exceptions, or max skew assignments found ;
+; REGZ[1]     ; No output delay, min/max delays, false-path exceptions, or max skew assignments found ;
+; REGZ[2]     ; No output delay, min/max delays, false-path exceptions, or max skew assignments found ;
+; REGZ[3]     ; No output delay, min/max delays, false-path exceptions, or max skew assignments found ;
+; REGZ[4]     ; No output delay, min/max delays, false-path exceptions, or max skew assignments found ;
+; REGZ[5]     ; No output delay, min/max delays, false-path exceptions, or max skew assignments found ;
+; REGZ[6]     ; No output delay, min/max delays, false-path exceptions, or max skew assignments found ;
+; REGZ[7]     ; No output delay, min/max delays, false-path exceptions, or max skew assignments found ;
++-------------+---------------------------------------------------------------------------------------+
 
 
 +--------------------------+
@@ -153,7 +914,7 @@ No non-DPA dedicated SERDES Receiver circuitry present in device or used in desi
 Info: *******************************************************************
 Info: Running Quartus Prime Timing Analyzer
     Info: Version 18.1.0 Build 625 09/12/2018 SJ Standard Edition
-    Info: Processing started: Mon Dec 02 20:43:59 2024
+    Info: Processing started: Tue Dec 03 02:44:37 2024
 Info: Command: quartus_sta TMP_8 -c TMP_8
 Info: qsta_default_script.tcl version: #1
 Warning (18236): Number of processors has not been specified which may cause overloading on shared machines.  Set the global assignment NUM_PARALLEL_PROCESSORS in your QSF to an appropriate value for best performance.
@@ -164,24 +925,44 @@ Info (334003): Started post-fitting delay annotation
 Info (334004): Delay annotation completed successfully
 Critical Warning (332012): Synopsys Design Constraints File file not found: 'TMP_8.sdc'. A Synopsys Design Constraints File is required by the Timing Analyzer to get proper timing constraints. Without it, the Compiler will not properly optimize the design.
 Info (332142): No user constrained base clocks found in the design. Calling "derive_clocks -period 1.0"
-Info (332096): The command derive_clocks did not find any clocks to derive.  No clocks were created or changed.
-Warning (332068): No clocks defined in design.
+Info (332105): Deriving Clocks
+    Info (332105): create_clock -period 1.000 -name CLK CLK
+    Info (332105): create_clock -period 1.000 -name RST RST
 Info: Found TIMING_ANALYZER_REPORT_SCRIPT_INCLUDE_DEFAULT_ANALYSIS = ON
-Info (332159): No clocks to report
-Info (332140): No fmax paths to report
 Info: Can't run Report Timing Closure Recommendations. The current device family is not supported.
-Info (332140): No Setup paths to report
-Info (332140): No Hold paths to report
-Info (332140): No Recovery paths to report
-Info (332140): No Removal paths to report
-Info (332140): No Minimum Pulse Width paths to report
+Critical Warning (332148): Timing requirements not met
+Info (332146): Worst-case setup slack is -8.939
+    Info (332119):     Slack       End Point TNS Clock 
+    Info (332119): ========= =================== =====================
+    Info (332119):    -8.939            -236.859 RST 
+    Info (332119):    -3.362             -38.792 CLK 
+Info (332146): Worst-case hold slack is 1.683
+    Info (332119):     Slack       End Point TNS Clock 
+    Info (332119): ========= =================== =====================
+    Info (332119):     1.683               0.000 CLK 
+    Info (332119):     2.335               0.000 RST 
+Info (332146): Worst-case recovery slack is -0.864
+    Info (332119):     Slack       End Point TNS Clock 
+    Info (332119): ========= =================== =====================
+    Info (332119):    -0.864             -27.648 RST 
+    Info (332119):    -0.864             -13.824 CLK 
+Info (332146): Worst-case removal slack is 0.810
+    Info (332119):     Slack       End Point TNS Clock 
+    Info (332119): ========= =================== =====================
+    Info (332119):     0.810               0.000 CLK 
+    Info (332119):     0.810               0.000 RST 
+Info (332146): Worst-case minimum pulse width slack is -2.289
+    Info (332119):     Slack       End Point TNS Clock 
+    Info (332119): ========= =================== =====================
+    Info (332119):    -2.289              -2.289 CLK 
+    Info (332119):    -2.289              -2.289 RST 
 Info (332001): The selected device family is not supported by the report_metastability command.
-Info (332101): Design is fully constrained for setup requirements
-Info (332101): Design is fully constrained for hold requirements
+Info (332102): Design is not fully constrained for setup requirements
+Info (332102): Design is not fully constrained for hold requirements
 Info: Quartus Prime Timing Analyzer was successful. 0 errors, 3 warnings
-    Info: Peak virtual memory: 4671 megabytes
-    Info: Processing ended: Mon Dec 02 20:43:59 2024
-    Info: Elapsed time: 00:00:00
-    Info: Total CPU time (on all processors): 00:00:00
+    Info: Peak virtual memory: 4672 megabytes
+    Info: Processing ended: Tue Dec 03 02:44:38 2024
+    Info: Elapsed time: 00:00:01
+    Info: Total CPU time (on all processors): 00:00:01
 
 

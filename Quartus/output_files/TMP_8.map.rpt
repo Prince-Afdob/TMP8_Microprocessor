@@ -1,5 +1,5 @@
 Analysis & Synthesis report for TMP_8
-Mon Dec 02 20:43:56 2024
+Tue Dec 03 02:44:31 2024
 Quartus Prime Version 18.1.0 Build 625 09/12/2018 SJ Standard Edition
 
 
@@ -16,8 +16,9 @@ Quartus Prime Version 18.1.0 Build 625 09/12/2018 SJ Standard Edition
   8. Registers Removed During Synthesis
   9. Removed Registers Triggering Further Register Optimizations
  10. General Register Statistics
- 11. Analysis & Synthesis Messages
- 12. Analysis & Synthesis Suppressed Messages
+ 11. Multiplexer Restructuring Statistics (Restructuring Performed)
+ 12. Analysis & Synthesis Messages
+ 13. Analysis & Synthesis Suppressed Messages
 
 
 
@@ -43,13 +44,13 @@ refer to the applicable agreement for further details.
 +-------------------------------------------------------------------------------+
 ; Analysis & Synthesis Summary                                                  ;
 +-----------------------------+-------------------------------------------------+
-; Analysis & Synthesis Status ; Successful - Mon Dec 02 20:43:56 2024           ;
+; Analysis & Synthesis Status ; Successful - Tue Dec 03 02:44:31 2024           ;
 ; Quartus Prime Version       ; 18.1.0 Build 625 09/12/2018 SJ Standard Edition ;
 ; Revision Name               ; TMP_8                                           ;
 ; Top-level Entity Name       ; Main_Block                                      ;
 ; Family                      ; MAX II                                          ;
-; Total logic elements        ; 0                                               ;
-; Total pins                  ; 9                                               ;
+; Total logic elements        ; 105                                             ;
+; Total pins                  ; 52                                              ;
 ; Total virtual pins          ; 0                                               ;
 ; UFM blocks                  ; 0 / 1 ( 0 % )                                   ;
 +-----------------------------+-------------------------------------------------+
@@ -142,16 +143,26 @@ refer to the applicable agreement for further details.
 +----------------------------+-------------+
 
 
-+---------------------------------------------------------------------------------------------------------------------------------------------------------------------------------+
-; Analysis & Synthesis Source Files Read                                                                                                                                          ;
-+----------------------------------+-----------------+------------------------------------+-----------------------------------------------------------------------------+---------+
-; File Name with User-Entered Path ; Used in Netlist ; File Type                          ; File Name with Absolute Path                                                ; Library ;
-+----------------------------------+-----------------+------------------------------------+-----------------------------------------------------------------------------+---------+
-; counter_8bit.v                   ; yes             ; User Verilog HDL File              ; C:/Users/Prince/Documents/GitHub/TMP8_Microprocessor/Quartus/counter_8bit.v ;         ;
-; MAR_8bit.v                       ; yes             ; User Verilog HDL File              ; C:/Users/Prince/Documents/GitHub/TMP8_Microprocessor/Quartus/MAR_8bit.v     ;         ;
-; buffer_8bit.v                    ; yes             ; User Verilog HDL File              ; C:/Users/Prince/Documents/GitHub/TMP8_Microprocessor/Quartus/buffer_8bit.v  ;         ;
-; Main_Block.bdf                   ; yes             ; User Block Diagram/Schematic File  ; C:/Users/Prince/Documents/GitHub/TMP8_Microprocessor/Quartus/Main_Block.bdf ;         ;
-+----------------------------------+-----------------+------------------------------------+-----------------------------------------------------------------------------+---------+
++---------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------+
+; Analysis & Synthesis Source Files Read                                                                                                                                                      ;
++----------------------------------+-----------------+------------------------------------+-----------------------------------------------------------------------------------------+---------+
+; File Name with User-Entered Path ; Used in Netlist ; File Type                          ; File Name with Absolute Path                                                            ; Library ;
++----------------------------------+-----------------+------------------------------------+-----------------------------------------------------------------------------------------+---------+
+; MAR_8bit.v                       ; yes             ; User Verilog HDL File              ; C:/Users/Prince/Documents/GitHub/TMP8_Microprocessor/Quartus/MAR_8bit.v                 ;         ;
+; buffer_8bit.v                    ; yes             ; User Verilog HDL File              ; C:/Users/Prince/Documents/GitHub/TMP8_Microprocessor/Quartus/buffer_8bit.v              ;         ;
+; Main_Block.bdf                   ; yes             ; User Block Diagram/Schematic File  ; C:/Users/Prince/Documents/GitHub/TMP8_Microprocessor/Quartus/Main_Block.bdf             ;         ;
+; counter_8bit.v                   ; yes             ; User Verilog HDL File              ; C:/Users/Prince/Documents/GitHub/TMP8_Microprocessor/Quartus/counter_8bit.v             ;         ;
+; register_8bit.v                  ; yes             ; User Verilog HDL File              ; C:/Users/Prince/Documents/GitHub/TMP8_Microprocessor/Quartus/register_8bit.v            ;         ;
+; adder_subtractor_control.v       ; yes             ; User Verilog HDL File              ; C:/Users/Prince/Documents/GitHub/TMP8_Microprocessor/Quartus/adder_subtractor_control.v ;         ;
+; bus_splitter_8bit.v              ; yes             ; User Verilog HDL File              ; C:/Users/Prince/Documents/GitHub/TMP8_Microprocessor/Quartus/bus_splitter_8bit.v        ;         ;
+; bus_combiner_10bit.v             ; yes             ; User Verilog HDL File              ; C:/Users/Prince/Documents/GitHub/TMP8_Microprocessor/Quartus/bus_combiner_10bit.v       ;         ;
+; decoder_3x8.v                    ; yes             ; User Verilog HDL File              ; C:/Users/Prince/Documents/GitHub/TMP8_Microprocessor/Quartus/decoder_3x8.v              ;         ;
+; counter_3bit.v                   ; yes             ; User Verilog HDL File              ; C:/Users/Prince/Documents/GitHub/TMP8_Microprocessor/Quartus/counter_3bit.v             ;         ;
+; bus_combiner_ISA.v               ; yes             ; User Verilog HDL File              ; C:/Users/Prince/Documents/GitHub/TMP8_Microprocessor/Quartus/bus_combiner_ISA.v         ;         ;
+; d_flip_flop.v                    ; yes             ; User Verilog HDL File              ; C:/Users/Prince/Documents/GitHub/TMP8_Microprocessor/Quartus/d_flip_flop.v              ;         ;
+; bus_splitter_16bit.v             ; yes             ; User Verilog HDL File              ; C:/Users/Prince/Documents/GitHub/TMP8_Microprocessor/Quartus/bus_splitter_16bit.v       ;         ;
+; bus_combine_2bit.v               ; yes             ; User Verilog HDL File              ; C:/Users/Prince/Documents/GitHub/TMP8_Microprocessor/Quartus/bus_combine_2bit.v         ;         ;
++----------------------------------+-----------------+------------------------------------+-----------------------------------------------------------------------------------------+---------+
 
 
 +-----------------------------------------------------+
@@ -159,74 +170,74 @@ refer to the applicable agreement for further details.
 +---------------------------------------------+-------+
 ; Resource                                    ; Usage ;
 +---------------------------------------------+-------+
-; Total logic elements                        ; 0     ;
-;     -- Combinational with no register       ; 0     ;
-;     -- Register only                        ; 0     ;
-;     -- Combinational with a register        ; 0     ;
+; Total logic elements                        ; 105   ;
+;     -- Combinational with no register       ; 57    ;
+;     -- Register only                        ; 40    ;
+;     -- Combinational with a register        ; 8     ;
 ;                                             ;       ;
 ; Logic element usage by number of LUT inputs ;       ;
-;     -- 4 input functions                    ; 0     ;
-;     -- 3 input functions                    ; 0     ;
-;     -- 2 input functions                    ; 0     ;
-;     -- 1 input functions                    ; 0     ;
-;     -- 0 input functions                    ; 0     ;
+;     -- 4 input functions                    ; 25    ;
+;     -- 3 input functions                    ; 25    ;
+;     -- 2 input functions                    ; 12    ;
+;     -- 1 input functions                    ; 2     ;
+;     -- 0 input functions                    ; 1     ;
 ;                                             ;       ;
 ; Logic elements by mode                      ;       ;
-;     -- normal mode                          ; 0     ;
-;     -- arithmetic mode                      ; 0     ;
+;     -- normal mode                          ; 90    ;
+;     -- arithmetic mode                      ; 15    ;
 ;     -- qfbk mode                            ; 0     ;
 ;     -- register cascade mode                ; 0     ;
-;     -- synchronous clear/load mode          ; 0     ;
-;     -- asynchronous clear/load mode         ; 0     ;
+;     -- synchronous clear/load mode          ; 8     ;
+;     -- asynchronous clear/load mode         ; 48    ;
 ;                                             ;       ;
-; Total registers                             ; 0     ;
-; I/O pins                                    ; 9     ;
+; Total registers                             ; 48    ;
+; Total logic cells in carry chains           ; 17    ;
+; I/O pins                                    ; 52    ;
+; Maximum fan-out node                        ; CLK   ;
+; Maximum fan-out                             ; 48    ;
+; Total fan-out                               ; 413   ;
+; Average fan-out                             ; 2.63  ;
 +---------------------------------------------+-------+
 
 
-+------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------+
-; Analysis & Synthesis Resource Utilization by Entity                                                                                                                                                                                ;
-+----------------------------+-------------+--------------+------------+------+--------------+--------------+-------------------+------------------+-----------------+------------+---------------------+-------------+--------------+
-; Compilation Hierarchy Node ; Logic Cells ; LC Registers ; UFM Blocks ; Pins ; Virtual Pins ; LUT-Only LCs ; Register-Only LCs ; LUT/Register LCs ; Carry Chain LCs ; Packed LCs ; Full Hierarchy Name ; Entity Name ; Library Name ;
-+----------------------------+-------------+--------------+------------+------+--------------+--------------+-------------------+------------------+-----------------+------------+---------------------+-------------+--------------+
-; |Main_Block                ; 0 (0)       ; 0            ; 0          ; 9    ; 0            ; 0 (0)        ; 0 (0)             ; 0 (0)            ; 0 (0)           ; 0 (0)      ; |Main_Block         ; Main_Block  ; work         ;
-+----------------------------+-------------+--------------+------------+------+--------------+--------------+-------------------+------------------+-----------------+------------+---------------------+-------------+--------------+
++---------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------+
+; Analysis & Synthesis Resource Utilization by Entity                                                                                                                                                                                                                             ;
++-------------------------------------+-------------+--------------+------------+------+--------------+--------------+-------------------+------------------+-----------------+------------+--------------------------------------------+--------------------------+--------------+
+; Compilation Hierarchy Node          ; Logic Cells ; LC Registers ; UFM Blocks ; Pins ; Virtual Pins ; LUT-Only LCs ; Register-Only LCs ; LUT/Register LCs ; Carry Chain LCs ; Packed LCs ; Full Hierarchy Name                        ; Entity Name              ; Library Name ;
++-------------------------------------+-------------+--------------+------------+------+--------------+--------------+-------------------+------------------+-----------------+------------+--------------------------------------------+--------------------------+--------------+
+; |Main_Block                         ; 105 (5)     ; 48           ; 0          ; 52   ; 0            ; 57 (5)       ; 40 (0)            ; 8 (0)            ; 17 (0)          ; 0 (0)      ; |Main_Block                                ; Main_Block               ; work         ;
+;    |MAR_8bit:inst2|                 ; 8 (8)       ; 8            ; 0          ; 0    ; 0            ; 0 (0)        ; 8 (8)             ; 0 (0)            ; 0 (0)           ; 0 (0)      ; |Main_Block|MAR_8bit:inst2                 ; MAR_8bit                 ; work         ;
+;    |adder_subtractor_control:inst6| ; 17 (17)     ; 0            ; 0          ; 0    ; 0            ; 17 (17)      ; 0 (0)             ; 0 (0)            ; 9 (9)           ; 0 (0)      ; |Main_Block|adder_subtractor_control:inst6 ; adder_subtractor_control ; work         ;
+;    |buffer_8bit:inst16|             ; 8 (8)       ; 0            ; 0          ; 0    ; 0            ; 8 (8)        ; 0 (0)             ; 0 (0)            ; 0 (0)           ; 0 (0)      ; |Main_Block|buffer_8bit:inst16             ; buffer_8bit              ; work         ;
+;    |buffer_8bit:inst8|              ; 26 (26)     ; 0            ; 0          ; 0    ; 0            ; 26 (26)      ; 0 (0)             ; 0 (0)            ; 0 (0)           ; 0 (0)      ; |Main_Block|buffer_8bit:inst8              ; buffer_8bit              ; work         ;
+;    |counter_8bit:inst|              ; 9 (9)       ; 8            ; 0          ; 0    ; 0            ; 1 (1)        ; 0 (0)             ; 8 (8)            ; 8 (8)           ; 0 (0)      ; |Main_Block|counter_8bit:inst              ; counter_8bit             ; work         ;
+;    |register_8bit:inst13|           ; 8 (8)       ; 8            ; 0          ; 0    ; 0            ; 0 (0)        ; 8 (8)             ; 0 (0)            ; 0 (0)           ; 0 (0)      ; |Main_Block|register_8bit:inst13           ; register_8bit            ; work         ;
+;    |register_8bit:inst3|            ; 8 (8)       ; 8            ; 0          ; 0    ; 0            ; 0 (0)        ; 8 (8)             ; 0 (0)            ; 0 (0)           ; 0 (0)      ; |Main_Block|register_8bit:inst3            ; register_8bit            ; work         ;
+;    |register_8bit:inst4|            ; 8 (8)       ; 8            ; 0          ; 0    ; 0            ; 0 (0)        ; 8 (8)             ; 0 (0)            ; 0 (0)           ; 0 (0)      ; |Main_Block|register_8bit:inst4            ; register_8bit            ; work         ;
+;    |register_8bit:inst5|            ; 8 (8)       ; 8            ; 0          ; 0    ; 0            ; 0 (0)        ; 8 (8)             ; 0 (0)            ; 0 (0)           ; 0 (0)      ; |Main_Block|register_8bit:inst5            ; register_8bit            ; work         ;
++-------------------------------------+-------------+--------------+------------+------+--------------+--------------+-------------------+------------------+-----------------+------------+--------------------------------------------+--------------------------+--------------+
 Note: For table entries with two numbers listed, the numbers in parentheses indicate the number of resources of the given type used by the specific entity alone. The numbers listed outside of parentheses indicate the total resources of the given type used by the specific entity and all of its sub-entities in the hierarchy.
 
 
-+-------------------------------------------------------------------------------+
-; Registers Removed During Synthesis                                            ;
-+----------------------------------------+--------------------------------------+
-; Register name                          ; Reason for Removal                   ;
-+----------------------------------------+--------------------------------------+
-; MAR_8bit:inst2|data_out[0..7]          ; Stuck at GND due to stuck port clock ;
-; counter_8bit:inst|count[0..7]          ; Lost fanout                          ;
-; Total Number of Removed Registers = 16 ;                                      ;
-+----------------------------------------+--------------------------------------+
++------------------------------------------------------------------------------+
+; Registers Removed During Synthesis                                           ;
++---------------------------------------+--------------------------------------+
+; Register name                         ; Reason for Removal                   ;
++---------------------------------------+--------------------------------------+
+; counter_3bit:inst22|count[0..2]       ; Stuck at GND due to stuck port clock ;
+; d_flip_flop:inst32|d_out              ; Lost fanout                          ;
+; Total Number of Removed Registers = 4 ;                                      ;
++---------------------------------------+--------------------------------------+
 
 
-+-----------------------------------------------------------------------------------------------+
-; Removed Registers Triggering Further Register Optimizations                                   ;
-+----------------------------+-------------------------+----------------------------------------+
-; Register name              ; Reason for Removal      ; Registers Removed due to This Register ;
-+----------------------------+-------------------------+----------------------------------------+
-; MAR_8bit:inst2|data_out[7] ; Stuck at GND            ; counter_8bit:inst|count[7]             ;
-;                            ; due to stuck port clock ;                                        ;
-; MAR_8bit:inst2|data_out[6] ; Stuck at GND            ; counter_8bit:inst|count[6]             ;
-;                            ; due to stuck port clock ;                                        ;
-; MAR_8bit:inst2|data_out[5] ; Stuck at GND            ; counter_8bit:inst|count[5]             ;
-;                            ; due to stuck port clock ;                                        ;
-; MAR_8bit:inst2|data_out[4] ; Stuck at GND            ; counter_8bit:inst|count[4]             ;
-;                            ; due to stuck port clock ;                                        ;
-; MAR_8bit:inst2|data_out[3] ; Stuck at GND            ; counter_8bit:inst|count[3]             ;
-;                            ; due to stuck port clock ;                                        ;
-; MAR_8bit:inst2|data_out[2] ; Stuck at GND            ; counter_8bit:inst|count[2]             ;
-;                            ; due to stuck port clock ;                                        ;
-; MAR_8bit:inst2|data_out[1] ; Stuck at GND            ; counter_8bit:inst|count[1]             ;
-;                            ; due to stuck port clock ;                                        ;
-; MAR_8bit:inst2|data_out[0] ; Stuck at GND            ; counter_8bit:inst|count[0]             ;
-;                            ; due to stuck port clock ;                                        ;
-+----------------------------+-------------------------+----------------------------------------+
++-------------------------------------------------------------------------------------------------+
+; Removed Registers Triggering Further Register Optimizations                                     ;
++------------------------------+-------------------------+----------------------------------------+
+; Register name                ; Reason for Removal      ; Registers Removed due to This Register ;
++------------------------------+-------------------------+----------------------------------------+
+; counter_3bit:inst22|count[0] ; Stuck at GND            ; d_flip_flop:inst32|d_out               ;
+;                              ; due to stuck port clock ;                                        ;
++------------------------------+-------------------------+----------------------------------------+
 
 
 +------------------------------------------------------+
@@ -234,14 +245,24 @@ Note: For table entries with two numbers listed, the numbers in parentheses indi
 +----------------------------------------------+-------+
 ; Statistic                                    ; Value ;
 +----------------------------------------------+-------+
-; Total registers                              ; 0     ;
+; Total registers                              ; 48    ;
 ; Number of registers using Synchronous Clear  ; 0     ;
-; Number of registers using Synchronous Load   ; 0     ;
-; Number of registers using Asynchronous Clear ; 0     ;
+; Number of registers using Synchronous Load   ; 8     ;
+; Number of registers using Asynchronous Clear ; 48    ;
 ; Number of registers using Asynchronous Load  ; 0     ;
-; Number of registers using Clock Enable       ; 0     ;
+; Number of registers using Clock Enable       ; 40    ;
 ; Number of registers using Preset             ; 0     ;
 +----------------------------------------------+-------+
+
+
++------------------------------------------------------------------------------------------------------------------------------------------------------+
+; Multiplexer Restructuring Statistics (Restructuring Performed)                                                                                       ;
++--------------------+-----------+---------------+----------------------+------------------------+------------+----------------------------------------+
+; Multiplexer Inputs ; Bus Width ; Baseline Area ; Area if Restructured ; Saving if Restructured ; Registered ; Example Multiplexer Output             ;
++--------------------+-----------+---------------+----------------------+------------------------+------------+----------------------------------------+
+; 3:1                ; 4 bits    ; 8 LEs         ; 4 LEs                ; 4 LEs                  ; Yes        ; |Main_Block|counter_8bit:inst|count[7] ;
+; 3:1                ; 4 bits    ; 8 LEs         ; 4 LEs                ; 4 LEs                  ; Yes        ; |Main_Block|counter_8bit:inst|count[3] ;
++--------------------+-----------+---------------+----------------------+------------------------+------------+----------------------------------------+
 
 
 +-------------------------------+
@@ -250,45 +271,132 @@ Note: For table entries with two numbers listed, the numbers in parentheses indi
 Info: *******************************************************************
 Info: Running Quartus Prime Analysis & Synthesis
     Info: Version 18.1.0 Build 625 09/12/2018 SJ Standard Edition
-    Info: Processing started: Mon Dec 02 20:43:50 2024
+    Info: Processing started: Tue Dec 03 02:44:20 2024
 Info: Command: quartus_map --read_settings_files=on --write_settings_files=off TMP_8 -c TMP_8
 Warning (18236): Number of processors has not been specified which may cause overloading on shared machines.  Set the global assignment NUM_PARALLEL_PROCESSORS in your QSF to an appropriate value for best performance.
 Info (20030): Parallel compilation is enabled and will use 8 of the 8 processors detected
-Info (12021): Found 1 design units, including 1 entities, in source file counter_8bit.v
-    Info (12023): Found entity 1: counter_8bit File: C:/Users/Prince/Documents/GitHub/TMP8_Microprocessor/Quartus/counter_8bit.v Line: 1
 Info (12021): Found 1 design units, including 1 entities, in source file mar_8bit.v
     Info (12023): Found entity 1: MAR_8bit File: C:/Users/Prince/Documents/GitHub/TMP8_Microprocessor/Quartus/MAR_8bit.v Line: 1
 Info (12021): Found 1 design units, including 1 entities, in source file buffer_8bit.v
     Info (12023): Found entity 1: buffer_8bit File: C:/Users/Prince/Documents/GitHub/TMP8_Microprocessor/Quartus/buffer_8bit.v Line: 1
 Info (12021): Found 1 design units, including 1 entities, in source file main_block.bdf
     Info (12023): Found entity 1: Main_Block
+Info (12021): Found 1 design units, including 1 entities, in source file counter_8bit.v
+    Info (12023): Found entity 1: counter_8bit File: C:/Users/Prince/Documents/GitHub/TMP8_Microprocessor/Quartus/counter_8bit.v Line: 1
+Info (12021): Found 1 design units, including 1 entities, in source file register_8bit.v
+    Info (12023): Found entity 1: register_8bit File: C:/Users/Prince/Documents/GitHub/TMP8_Microprocessor/Quartus/register_8bit.v Line: 1
+Info (12021): Found 1 design units, including 1 entities, in source file bus_splitter_2bit.v
+    Info (12023): Found entity 1: bus_splitter_2bit File: C:/Users/Prince/Documents/GitHub/TMP8_Microprocessor/Quartus/bus_splitter_2bit.v Line: 1
+Info (12021): Found 1 design units, including 1 entities, in source file adder_subtractor_control.v
+    Info (12023): Found entity 1: adder_subtractor_control File: C:/Users/Prince/Documents/GitHub/TMP8_Microprocessor/Quartus/adder_subtractor_control.v Line: 1
+Info (12021): Found 1 design units, including 1 entities, in source file bus_splitter_8bit.v
+    Info (12023): Found entity 1: bus_splitter_8bit File: C:/Users/Prince/Documents/GitHub/TMP8_Microprocessor/Quartus/bus_splitter_8bit.v Line: 1
+Info (12021): Found 1 design units, including 1 entities, in source file bus_combiner_10bit.v
+    Info (12023): Found entity 1: bus_combiner_10bit File: C:/Users/Prince/Documents/GitHub/TMP8_Microprocessor/Quartus/bus_combiner_10bit.v Line: 1
+Info (12021): Found 1 design units, including 1 entities, in source file decoder_3x8.v
+    Info (12023): Found entity 1: decoder_3x8 File: C:/Users/Prince/Documents/GitHub/TMP8_Microprocessor/Quartus/decoder_3x8.v Line: 1
+Info (12021): Found 1 design units, including 1 entities, in source file counter_3bit.v
+    Info (12023): Found entity 1: counter_3bit File: C:/Users/Prince/Documents/GitHub/TMP8_Microprocessor/Quartus/counter_3bit.v Line: 1
+Info (12021): Found 1 design units, including 1 entities, in source file bus_combiner_4bit.v
+    Info (12023): Found entity 1: bus_combiner_4bit File: C:/Users/Prince/Documents/GitHub/TMP8_Microprocessor/Quartus/bus_combiner_4bit.v Line: 1
+Info (12021): Found 1 design units, including 1 entities, in source file bus_combiner_isa.v
+    Info (12023): Found entity 1: bus_combiner_ISA File: C:/Users/Prince/Documents/GitHub/TMP8_Microprocessor/Quartus/bus_combiner_ISA.v Line: 1
+Info (12021): Found 1 design units, including 1 entities, in source file d_flip_flop.v
+    Info (12023): Found entity 1: d_flip_flop File: C:/Users/Prince/Documents/GitHub/TMP8_Microprocessor/Quartus/d_flip_flop.v Line: 1
+Info (12021): Found 1 design units, including 1 entities, in source file bus_splitter_16bit.v
+    Info (12023): Found entity 1: bus_splitter_16bit File: C:/Users/Prince/Documents/GitHub/TMP8_Microprocessor/Quartus/bus_splitter_16bit.v Line: 1
+Info (12021): Found 1 design units, including 1 entities, in source file bus_combine_2bit.v
+    Info (12023): Found entity 1: bus_combiner_2bit File: C:/Users/Prince/Documents/GitHub/TMP8_Microprocessor/Quartus/bus_combine_2bit.v Line: 1
 Info (12127): Elaborating entity "Main_Block" for the top level hierarchy
-Warning (275013): Port "clk" of type MAR_8bit and instance "inst2" is missing source signal
+Warning (275013): Port "clk" of type counter_3bit and instance "inst22" is missing source signal
 Info (12128): Elaborating entity "MAR_8bit" for hierarchy "MAR_8bit:inst2"
 Info (12128): Elaborating entity "buffer_8bit" for hierarchy "buffer_8bit:inst1"
+Info (12128): Elaborating entity "bus_splitter_16bit" for hierarchy "bus_splitter_16bit:inst33"
 Info (12128): Elaborating entity "counter_8bit" for hierarchy "counter_8bit:inst"
-Warning (10230): Verilog HDL assignment warning at counter_8bit.v(14): truncated value with size 32 to match size of target (8) File: C:/Users/Prince/Documents/GitHub/TMP8_Microprocessor/Quartus/counter_8bit.v Line: 14
+Warning (10230): Verilog HDL assignment warning at counter_8bit.v(15): truncated value with size 32 to match size of target (8) File: C:/Users/Prince/Documents/GitHub/TMP8_Microprocessor/Quartus/counter_8bit.v Line: 15
+Info (12128): Elaborating entity "bus_combiner_ISA" for hierarchy "bus_combiner_ISA:inst31"
+Info (12128): Elaborating entity "bus_splitter_8bit" for hierarchy "bus_splitter_8bit:inst19"
+Info (12128): Elaborating entity "register_8bit" for hierarchy "register_8bit:inst13"
+Info (12128): Elaborating entity "adder_subtractor_control" for hierarchy "adder_subtractor_control:inst6"
+Info (12128): Elaborating entity "bus_combiner_2bit" for hierarchy "bus_combiner_2bit:inst35"
+Info (12128): Elaborating entity "bus_combiner_10bit" for hierarchy "bus_combiner_10bit:inst20"
+Info (12128): Elaborating entity "decoder_3x8" for hierarchy "decoder_3x8:inst21"
+Info (12128): Elaborating entity "counter_3bit" for hierarchy "counter_3bit:inst22"
+Warning (10230): Verilog HDL assignment warning at counter_3bit.v(10): truncated value with size 32 to match size of target (3) File: C:/Users/Prince/Documents/GitHub/TMP8_Microprocessor/Quartus/counter_3bit.v Line: 10
+Info (12128): Elaborating entity "d_flip_flop" for hierarchy "d_flip_flop:inst32"
+Warning (13046): Tri-state node(s) do not directly drive top-level pin(s)
+    Warning (13049): Converted tri-state buffer "buffer_8bit:inst1|data_out[0]" feeding internal logic into a wire File: C:/Users/Prince/Documents/GitHub/TMP8_Microprocessor/Quartus/buffer_8bit.v Line: 5
+    Warning (13049): Converted tri-state buffer "buffer_8bit:inst1|data_out[1]" feeding internal logic into a wire File: C:/Users/Prince/Documents/GitHub/TMP8_Microprocessor/Quartus/buffer_8bit.v Line: 5
+    Warning (13049): Converted tri-state buffer "buffer_8bit:inst1|data_out[2]" feeding internal logic into a wire File: C:/Users/Prince/Documents/GitHub/TMP8_Microprocessor/Quartus/buffer_8bit.v Line: 5
+    Warning (13049): Converted tri-state buffer "buffer_8bit:inst1|data_out[3]" feeding internal logic into a wire File: C:/Users/Prince/Documents/GitHub/TMP8_Microprocessor/Quartus/buffer_8bit.v Line: 5
+    Warning (13049): Converted tri-state buffer "buffer_8bit:inst1|data_out[4]" feeding internal logic into a wire File: C:/Users/Prince/Documents/GitHub/TMP8_Microprocessor/Quartus/buffer_8bit.v Line: 5
+    Warning (13049): Converted tri-state buffer "buffer_8bit:inst1|data_out[5]" feeding internal logic into a wire File: C:/Users/Prince/Documents/GitHub/TMP8_Microprocessor/Quartus/buffer_8bit.v Line: 5
+    Warning (13049): Converted tri-state buffer "buffer_8bit:inst1|data_out[6]" feeding internal logic into a wire File: C:/Users/Prince/Documents/GitHub/TMP8_Microprocessor/Quartus/buffer_8bit.v Line: 5
+    Warning (13049): Converted tri-state buffer "buffer_8bit:inst1|data_out[7]" feeding internal logic into a wire File: C:/Users/Prince/Documents/GitHub/TMP8_Microprocessor/Quartus/buffer_8bit.v Line: 5
+Warning (13046): Tri-state node(s) do not directly drive top-level pin(s)
+    Warning (13047): Converted the fan-out from the tri-state buffer "buffer_8bit:inst18|data_out[3]" to the node "register_8bit:inst13|data_out[3]" into an OR gate File: C:/Users/Prince/Documents/GitHub/TMP8_Microprocessor/Quartus/buffer_8bit.v Line: 5
+    Warning (13047): Converted the fan-out from the tri-state buffer "buffer_8bit:inst18|data_out[2]" to the node "register_8bit:inst13|data_out[2]" into an OR gate File: C:/Users/Prince/Documents/GitHub/TMP8_Microprocessor/Quartus/buffer_8bit.v Line: 5
+    Warning (13047): Converted the fan-out from the tri-state buffer "buffer_8bit:inst18|data_out[1]" to the node "register_8bit:inst13|data_out[1]" into an OR gate File: C:/Users/Prince/Documents/GitHub/TMP8_Microprocessor/Quartus/buffer_8bit.v Line: 5
+    Warning (13047): Converted the fan-out from the tri-state buffer "buffer_8bit:inst18|data_out[0]" to the node "register_8bit:inst13|data_out[0]" into an OR gate File: C:/Users/Prince/Documents/GitHub/TMP8_Microprocessor/Quartus/buffer_8bit.v Line: 5
+    Warning (13047): Converted the fan-out from the tri-state buffer "buffer_8bit:inst11|data_out[7]" to the node "register_8bit:inst5|data_out[7]" into an OR gate File: C:/Users/Prince/Documents/GitHub/TMP8_Microprocessor/Quartus/buffer_8bit.v Line: 5
+    Warning (13047): Converted the fan-out from the tri-state buffer "buffer_8bit:inst11|data_out[6]" to the node "register_8bit:inst5|data_out[6]" into an OR gate File: C:/Users/Prince/Documents/GitHub/TMP8_Microprocessor/Quartus/buffer_8bit.v Line: 5
+    Warning (13047): Converted the fan-out from the tri-state buffer "buffer_8bit:inst11|data_out[5]" to the node "register_8bit:inst5|data_out[5]" into an OR gate File: C:/Users/Prince/Documents/GitHub/TMP8_Microprocessor/Quartus/buffer_8bit.v Line: 5
+    Warning (13047): Converted the fan-out from the tri-state buffer "buffer_8bit:inst11|data_out[4]" to the node "register_8bit:inst5|data_out[4]" into an OR gate File: C:/Users/Prince/Documents/GitHub/TMP8_Microprocessor/Quartus/buffer_8bit.v Line: 5
+    Warning (13047): Converted the fan-out from the tri-state buffer "buffer_8bit:inst11|data_out[3]" to the node "register_8bit:inst5|data_out[3]" into an OR gate File: C:/Users/Prince/Documents/GitHub/TMP8_Microprocessor/Quartus/buffer_8bit.v Line: 5
+    Warning (13047): Converted the fan-out from the tri-state buffer "buffer_8bit:inst11|data_out[2]" to the node "register_8bit:inst5|data_out[2]" into an OR gate File: C:/Users/Prince/Documents/GitHub/TMP8_Microprocessor/Quartus/buffer_8bit.v Line: 5
+    Warning (13047): Converted the fan-out from the tri-state buffer "buffer_8bit:inst11|data_out[1]" to the node "register_8bit:inst5|data_out[1]" into an OR gate File: C:/Users/Prince/Documents/GitHub/TMP8_Microprocessor/Quartus/buffer_8bit.v Line: 5
+    Warning (13047): Converted the fan-out from the tri-state buffer "buffer_8bit:inst11|data_out[0]" to the node "register_8bit:inst5|data_out[0]" into an OR gate File: C:/Users/Prince/Documents/GitHub/TMP8_Microprocessor/Quartus/buffer_8bit.v Line: 5
+    Warning (13047): Converted the fan-out from the tri-state buffer "buffer_8bit:inst18|data_out[7]" to the node "register_8bit:inst13|data_out[7]" into an OR gate File: C:/Users/Prince/Documents/GitHub/TMP8_Microprocessor/Quartus/buffer_8bit.v Line: 5
+    Warning (13047): Converted the fan-out from the tri-state buffer "buffer_8bit:inst18|data_out[6]" to the node "register_8bit:inst13|data_out[6]" into an OR gate File: C:/Users/Prince/Documents/GitHub/TMP8_Microprocessor/Quartus/buffer_8bit.v Line: 5
+    Warning (13047): Converted the fan-out from the tri-state buffer "buffer_8bit:inst18|data_out[5]" to the node "register_8bit:inst13|data_out[5]" into an OR gate File: C:/Users/Prince/Documents/GitHub/TMP8_Microprocessor/Quartus/buffer_8bit.v Line: 5
+    Warning (13047): Converted the fan-out from the tri-state buffer "buffer_8bit:inst18|data_out[4]" to the node "register_8bit:inst13|data_out[4]" into an OR gate File: C:/Users/Prince/Documents/GitHub/TMP8_Microprocessor/Quartus/buffer_8bit.v Line: 5
+    Warning (13047): Converted the fan-out from the tri-state buffer "buffer_8bit:inst9|data_out[3]" to the node "register_8bit:inst3|data_out[3]" into an OR gate File: C:/Users/Prince/Documents/GitHub/TMP8_Microprocessor/Quartus/buffer_8bit.v Line: 5
+    Warning (13047): Converted the fan-out from the tri-state buffer "buffer_8bit:inst10|data_out[3]" to the node "register_8bit:inst4|data_out[3]" into an OR gate File: C:/Users/Prince/Documents/GitHub/TMP8_Microprocessor/Quartus/buffer_8bit.v Line: 5
+    Warning (13047): Converted the fan-out from the tri-state buffer "buffer_8bit:inst9|data_out[2]" to the node "register_8bit:inst3|data_out[2]" into an OR gate File: C:/Users/Prince/Documents/GitHub/TMP8_Microprocessor/Quartus/buffer_8bit.v Line: 5
+    Warning (13047): Converted the fan-out from the tri-state buffer "buffer_8bit:inst10|data_out[2]" to the node "register_8bit:inst4|data_out[2]" into an OR gate File: C:/Users/Prince/Documents/GitHub/TMP8_Microprocessor/Quartus/buffer_8bit.v Line: 5
+    Warning (13047): Converted the fan-out from the tri-state buffer "buffer_8bit:inst9|data_out[1]" to the node "register_8bit:inst3|data_out[1]" into an OR gate File: C:/Users/Prince/Documents/GitHub/TMP8_Microprocessor/Quartus/buffer_8bit.v Line: 5
+    Warning (13047): Converted the fan-out from the tri-state buffer "buffer_8bit:inst10|data_out[1]" to the node "register_8bit:inst4|data_out[1]" into an OR gate File: C:/Users/Prince/Documents/GitHub/TMP8_Microprocessor/Quartus/buffer_8bit.v Line: 5
+    Warning (13047): Converted the fan-out from the tri-state buffer "buffer_8bit:inst9|data_out[0]" to the node "register_8bit:inst3|data_out[0]" into an OR gate File: C:/Users/Prince/Documents/GitHub/TMP8_Microprocessor/Quartus/buffer_8bit.v Line: 5
+    Warning (13047): Converted the fan-out from the tri-state buffer "buffer_8bit:inst10|data_out[0]" to the node "register_8bit:inst4|data_out[0]" into an OR gate File: C:/Users/Prince/Documents/GitHub/TMP8_Microprocessor/Quartus/buffer_8bit.v Line: 5
+    Warning (13047): Converted the fan-out from the tri-state buffer "buffer_8bit:inst9|data_out[7]" to the node "register_8bit:inst3|data_out[7]" into an OR gate File: C:/Users/Prince/Documents/GitHub/TMP8_Microprocessor/Quartus/buffer_8bit.v Line: 5
+    Warning (13047): Converted the fan-out from the tri-state buffer "buffer_8bit:inst10|data_out[7]" to the node "register_8bit:inst4|data_out[7]" into an OR gate File: C:/Users/Prince/Documents/GitHub/TMP8_Microprocessor/Quartus/buffer_8bit.v Line: 5
+    Warning (13047): Converted the fan-out from the tri-state buffer "buffer_8bit:inst9|data_out[6]" to the node "register_8bit:inst3|data_out[6]" into an OR gate File: C:/Users/Prince/Documents/GitHub/TMP8_Microprocessor/Quartus/buffer_8bit.v Line: 5
+    Warning (13047): Converted the fan-out from the tri-state buffer "buffer_8bit:inst10|data_out[6]" to the node "register_8bit:inst4|data_out[6]" into an OR gate File: C:/Users/Prince/Documents/GitHub/TMP8_Microprocessor/Quartus/buffer_8bit.v Line: 5
+    Warning (13047): Converted the fan-out from the tri-state buffer "buffer_8bit:inst9|data_out[5]" to the node "register_8bit:inst3|data_out[5]" into an OR gate File: C:/Users/Prince/Documents/GitHub/TMP8_Microprocessor/Quartus/buffer_8bit.v Line: 5
+    Warning (13047): Converted the fan-out from the tri-state buffer "buffer_8bit:inst10|data_out[5]" to the node "register_8bit:inst4|data_out[5]" into an OR gate File: C:/Users/Prince/Documents/GitHub/TMP8_Microprocessor/Quartus/buffer_8bit.v Line: 5
+    Warning (13047): Converted the fan-out from the tri-state buffer "buffer_8bit:inst9|data_out[4]" to the node "register_8bit:inst3|data_out[4]" into an OR gate File: C:/Users/Prince/Documents/GitHub/TMP8_Microprocessor/Quartus/buffer_8bit.v Line: 5
+    Warning (13047): Converted the fan-out from the tri-state buffer "buffer_8bit:inst10|data_out[4]" to the node "register_8bit:inst4|data_out[4]" into an OR gate File: C:/Users/Prince/Documents/GitHub/TMP8_Microprocessor/Quartus/buffer_8bit.v Line: 5
+Warning (13046): Tri-state node(s) do not directly drive top-level pin(s)
+    Warning (13047): Converted the fan-out from the tri-state buffer "buffer_8bit:inst8|data_out[3]" to the node "buffer_8bit:inst18|data_out[3]" into an OR gate File: C:/Users/Prince/Documents/GitHub/TMP8_Microprocessor/Quartus/buffer_8bit.v Line: 5
+    Warning (13047): Converted the fan-out from the tri-state buffer "buffer_8bit:inst8|data_out[2]" to the node "buffer_8bit:inst18|data_out[2]" into an OR gate File: C:/Users/Prince/Documents/GitHub/TMP8_Microprocessor/Quartus/buffer_8bit.v Line: 5
+    Warning (13047): Converted the fan-out from the tri-state buffer "buffer_8bit:inst8|data_out[1]" to the node "buffer_8bit:inst18|data_out[1]" into an OR gate File: C:/Users/Prince/Documents/GitHub/TMP8_Microprocessor/Quartus/buffer_8bit.v Line: 5
+    Warning (13047): Converted the fan-out from the tri-state buffer "buffer_8bit:inst8|data_out[0]" to the node "buffer_8bit:inst18|data_out[0]" into an OR gate File: C:/Users/Prince/Documents/GitHub/TMP8_Microprocessor/Quartus/buffer_8bit.v Line: 5
+    Warning (13047): Converted the fan-out from the tri-state buffer "buffer_8bit:inst8|data_out[7]" to the node "buffer_8bit:inst11|data_out[7]" into an OR gate File: C:/Users/Prince/Documents/GitHub/TMP8_Microprocessor/Quartus/buffer_8bit.v Line: 5
+    Warning (13047): Converted the fan-out from the tri-state buffer "buffer_8bit:inst8|data_out[6]" to the node "buffer_8bit:inst11|data_out[6]" into an OR gate File: C:/Users/Prince/Documents/GitHub/TMP8_Microprocessor/Quartus/buffer_8bit.v Line: 5
+    Warning (13047): Converted the fan-out from the tri-state buffer "buffer_8bit:inst8|data_out[5]" to the node "buffer_8bit:inst11|data_out[5]" into an OR gate File: C:/Users/Prince/Documents/GitHub/TMP8_Microprocessor/Quartus/buffer_8bit.v Line: 5
+    Warning (13047): Converted the fan-out from the tri-state buffer "buffer_8bit:inst8|data_out[4]" to the node "buffer_8bit:inst11|data_out[4]" into an OR gate File: C:/Users/Prince/Documents/GitHub/TMP8_Microprocessor/Quartus/buffer_8bit.v Line: 5
 Warning (13024): Output pins are stuck at VCC or GND
-    Warning (13410): Pin "Data[7]" is stuck at GND
-    Warning (13410): Pin "Data[6]" is stuck at GND
-    Warning (13410): Pin "Data[5]" is stuck at GND
-    Warning (13410): Pin "Data[4]" is stuck at GND
-    Warning (13410): Pin "Data[3]" is stuck at GND
-    Warning (13410): Pin "Data[2]" is stuck at GND
-    Warning (13410): Pin "Data[1]" is stuck at GND
-    Warning (13410): Pin "Data[0]" is stuck at GND
-Info (17049): 8 registers lost all their fanouts during netlist optimizations.
-Warning (21074): Design contains 1 input pin(s) that do not drive logic
-    Warning (15610): No output dependent on input pin "CLK"
-Info (21057): Implemented 9 device resources after synthesis - the final resource count might be different
-    Info (21058): Implemented 1 input pins
-    Info (21059): Implemented 8 output pins
+    Warning (13410): Pin "ISA_Addr[5]" is stuck at GND
+    Warning (13410): Pin "ISA_Addr[4]" is stuck at GND
+    Warning (13410): Pin "ISA_Addr[3]" is stuck at GND
+    Warning (13410): Pin "ISA_Addr[2]" is stuck at GND
+    Warning (13410): Pin "ISA_Addr[1]" is stuck at GND
+    Warning (13410): Pin "ISA_Addr[0]" is stuck at VCC
+Info (17049): 1 registers lost all their fanouts during netlist optimizations.
+Warning (21074): Design contains 3 input pin(s) that do not drive logic
+    Warning (15610): No output dependent on input pin "ISA[15]"
+    Warning (15610): No output dependent on input pin "ISA[13]"
+    Warning (15610): No output dependent on input pin "ISA[4]"
+Info (21057): Implemented 157 device resources after synthesis - the final resource count might be different
+    Info (21058): Implemented 26 input pins
+    Info (21059): Implemented 26 output pins
+    Info (21061): Implemented 105 logic cells
 Info (144001): Generated suppressed messages file C:/Users/Prince/Documents/GitHub/TMP8_Microprocessor/Quartus/output_files/TMP_8.map.smsg
-Info: Quartus Prime Analysis & Synthesis was successful. 0 errors, 14 warnings
-    Info: Peak virtual memory: 4704 megabytes
-    Info: Processing ended: Mon Dec 02 20:43:56 2024
-    Info: Elapsed time: 00:00:06
-    Info: Total CPU time (on all processors): 00:00:13
+Info: Quartus Prime Analysis & Synthesis was successful. 0 errors, 66 warnings
+    Info: Peak virtual memory: 4706 megabytes
+    Info: Processing ended: Tue Dec 03 02:44:31 2024
+    Info: Elapsed time: 00:00:11
+    Info: Total CPU time (on all processors): 00:00:29
 
 
 +------------------------------------------+
